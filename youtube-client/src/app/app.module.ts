@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { YoutubeComponent } from './components/svgs/youtube/youtube.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, LogoComponent, YoutubeComponent],
+  declarations: [AppComponent, HeaderComponent, LogoComponent, YoutubeComponent, SearchComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
