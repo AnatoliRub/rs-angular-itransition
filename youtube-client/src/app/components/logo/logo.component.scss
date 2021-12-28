@@ -12,7 +12,14 @@
   }
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
     transition: 1s;
+  }
+}
+
+@media (max-width: 1200px) {
+  .logo {
+    grid-area: a;
+    justify-content: flex-start;
   }
 }

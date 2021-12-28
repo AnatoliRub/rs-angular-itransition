@@ -1,0 +1,41 @@
+@import 'src/styles.scss';
+
+.login__account {
+  position: absolute;
+  top: 50%;                         
+  transform: translate(0, -50%);
+  display: flex;
+  align-items: center;
+  right: 9.75rem;
+
+  &-title {
+    color: $black;
+    margin-right: 0.5rem;
+    @include text;
+  }
+
+  &-img-cnt {
+    display: flex;
+    padding: 0.15rem;
+    align-items: center;
+    border-radius: 0.25rem;
+    background-color: $blue;
+    @include base-btn-behavior;
+    transition: 1s;
+
+    .fa-user-circle {
+      color: $white;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .login__account {
+    grid-area: c;
+    transform: none;
+    justify-content: flex-end;
+    align-items: center;
+    position: static;
+  }
+}

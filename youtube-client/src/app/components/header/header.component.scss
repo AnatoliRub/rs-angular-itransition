@@ -9,3 +9,15 @@
   align-items: center;
   background-color: $main-backgr;
 }
+
+@media (max-width: 1200px) {
+  .header {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 100%;
+    grid-template-areas:  "a c"
+                          "b b";
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}

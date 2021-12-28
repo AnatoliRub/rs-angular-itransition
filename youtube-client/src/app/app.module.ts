@@ -7,9 +7,17 @@ import { HeaderComponent } from './components/header/header.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { YoutubeComponent } from './components/svgs/youtube/youtube.component';
 import { SearchComponent } from './components/search/search.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, LogoComponent, YoutubeComponent, SearchComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    LogoComponent,
+    YoutubeComponent,
+    SearchComponent,
+    LoginComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
