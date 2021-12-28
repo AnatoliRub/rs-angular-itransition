@@ -1,0 +1,11 @@
+@import 'src/styles.scss';
+
+.header {
+  position: relative;
+  display: flex;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  justify-content: center;
+  align-items: center;
+  background-color: $main-backgr;
+}

@@ -1,0 +1,14 @@
+@import 'src/styles.scss';
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 2.8rem;
+  margin-right: 0.625rem;
+  transition: 1s;
+
+  &:hover {
+    transform: scale(1.05);
+    transition: 1s;
+  }
+}
