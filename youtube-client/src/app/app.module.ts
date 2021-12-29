@@ -20,7 +20,6 @@ import { LoginComponent } from './components/login/login.component';
     LoginComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
