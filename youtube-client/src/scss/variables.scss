@@ -1,3 +1,5 @@
+@import '/src/scss/functions.scss';
+
 :root {
   --main-background: #e5e5e5;
   --popup-background: #f2f2f2;
@@ -13,3 +15,5 @@
   --black: #4f4f4f;
   --white: #ffffff;
 }
+
+$second-resolution: rem(1200);

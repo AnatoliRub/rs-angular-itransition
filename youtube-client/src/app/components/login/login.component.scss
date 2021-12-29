@@ -8,7 +8,7 @@
   align-items: center;
   right: rem(160);
 
-  @media (max-width: 1200px) {
+  @media (max-width: $second-resolution) {
     grid-area: c;
     transform: none;
     justify-content: flex-end;
