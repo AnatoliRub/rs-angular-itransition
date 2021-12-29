@@ -19,11 +19,11 @@
     align-items: center;
     text-align: center;
     padding: 0 22px;
-    color: $white;
+    color: var(--white);
     border: none;
     outline: none;
     border-radius: 0rem 0.25rem 0.25rem 0rem;
-    background-color: $blue;
+    background-color: var(--blue);
     @include text;
     @include base-btn-behavior;
     transition: 1s;
@@ -37,7 +37,7 @@
     padding: 0.28125rem;
     width: 1.5rem;
     margin-left: 0.90625rem;
-    background: $blue;
+    background: var(--blue);
     border-radius: 0.3125rem;
     @include base-btn-behavior;
     transition: 1s;
@@ -70,7 +70,7 @@
       margin: 0.109375rem;
       width: 0.84375rem;
       height: 0.09375rem;
-      background-color: $white;
+      background-color: var(--white);
       border-radius: 0.0625rem;
     }
 
@@ -81,7 +81,7 @@
         position: absolute;
         top: -0.0625rem;
         right: 0.125rem;
-        background-color: $white;
+        background-color: var(--white);
         border-radius: 0.109375rem;
         width: 0.21875rem;
         height: 0.21875rem;
@@ -96,7 +96,7 @@
         position: absolute;
         top: -0.0625rem;
         left: 0.125rem;
-        background-color: $white;
+        background-color: var(--white);
         border-radius: 0.109375rem;
         width: 0.21875rem;
         height: 0.21875rem;
@@ -111,7 +111,7 @@
         position: absolute;
         top: -0.0625rem;
         right: 0.125rem;
-        background-color: $white;
+        background-color: var(--white);
         border-radius: 0.109375rem;
         width: 0.21875rem;
         height: 0.21875rem;

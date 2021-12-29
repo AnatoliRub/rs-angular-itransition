@@ -1,5 +1,11 @@
 @import 'src/styles.scss';
 
+.search {
+  grid-area: b;
+  max-width: 35.625rem;
+  width: 100%;
+}
+
 .header {
   position: relative;
   display: flex;
@@ -7,10 +13,14 @@
   padding-bottom: 0.9375rem;
   justify-content: center;
   align-items: center;
-  background-color: $main-backgr;
+  background-color: var(--main-background);
 }
 
 @media (max-width: 1200px) {
+  .search {
+    margin-left: auto;
+    margin-right: auto;
+  }
   .header {
     display: grid;
     grid-template-columns: 50% 50%;
