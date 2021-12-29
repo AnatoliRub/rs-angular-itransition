@@ -8,7 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { YoutubeComponent } from './components/svgs/youtube/youtube.component';
 import { SearchComponent } from './components/search/search.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginInfoComponent } from './components/login-info/login-info.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { LoginComponent } from './components/login/login.component';
     LogoComponent,
     YoutubeComponent,
     SearchComponent,
-    LoginComponent,
+    LoginInfoComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
   bootstrap: [AppComponent],

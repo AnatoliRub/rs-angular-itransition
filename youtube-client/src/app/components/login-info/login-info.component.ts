@@ -3,9 +3,9 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  templateUrl: './login-info.component.html',
+  styleUrls: ['./login-info.component.scss'],
 })
-export class LoginComponent {
+export class LoginInfoComponent {
   faUserCircle = faUserCircle;
 }
