@@ -6,7 +6,7 @@
   transform: translate(0, -50%);
   display: flex;
   align-items: center;
-  right: 9.75rem;
+  right: rem(160);
 
   @media (max-width: 1200px) {
     grid-area: c;
@@ -18,22 +18,22 @@
 
   &-title {
     color: var(--black);
-    margin-right: 0.5rem;
+    margin-right: rem(8);
     @include text;
   }
 
   &-image-container {
     display: flex;
-    padding: 0.15rem;
+    padding: rem(2.4);
     align-items: center;
-    border-radius: 0.25rem;
+    border-radius: rem(4);
     background-color: var(--blue);
     @include base-button-behavior;
     transition: 1s;
 
     .fa-user-circle {
       color: var(--white);
-      font-size: 1.2rem;
+      font-size: rem(18);
     }
   }
 }

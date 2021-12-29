@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 0.625rem;
+  margin-right: rem(10);
   transition: 1s;
 
   @media (max-width: 1200px) {
@@ -13,7 +13,7 @@
   }
 
   &__link {
-    height: 3.125rem;
+    height: rem(50);
   }
 
   &:hover {

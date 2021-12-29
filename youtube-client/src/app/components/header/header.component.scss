@@ -2,7 +2,7 @@
 
 .search {
   grid-area: b;
-  max-width: 35.625rem;
+  max-width: rem(570);
   width: 100%;
 
   @media (max-width: 1200px) {
@@ -14,8 +14,8 @@
 .header {
   position: relative;
   display: flex;
-  padding-top: 0.9375rem;
-  padding-bottom: 0.9375rem;
+  padding-top: rem(15);
+  padding-bottom: rem(15);
   justify-content: center;
   align-items: center;
   background-color: var(--main-background);
@@ -27,7 +27,7 @@
     grid-template-areas:
       'a c'
       'b b';
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: rem(30);
+    padding-right: rem(30);
   }
 }
