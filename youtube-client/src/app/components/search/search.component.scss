@@ -4,6 +4,13 @@
   display: flex;
   justify-content: center;
 
+  @media (max-width: 1200px) {
+    grid-area: b;
+    flex: 1;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   &__inp {
     display: block;
     padding-left: 0.375rem;
@@ -25,7 +32,7 @@
     border-radius: 0rem 0.25rem 0.25rem 0rem;
     background-color: var(--blue);
     @include text;
-    @include base-btn-behavior;
+    @include base-button-behavior;
     transition: 1s;
   }
 
@@ -39,7 +46,7 @@
     margin-left: 0.90625rem;
     background: var(--blue);
     border-radius: 0.3125rem;
-    @include base-btn-behavior;
+    @include base-button-behavior;
     transition: 1s;
 
     &:hover {
@@ -118,14 +125,5 @@
         transition: 1s;
       }
     }
-  }
-}
-
-@media (max-width: 1200px) {
-  .search {
-    grid-area: b;
-    flex: 1;
-    margin-left: auto;
-    margin-right: auto;
   }
 }

@@ -4,6 +4,11 @@
   grid-area: b;
   max-width: 35.625rem;
   width: 100%;
+
+  @media (max-width: 1200px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .header {
@@ -14,14 +19,8 @@
   justify-content: center;
   align-items: center;
   background-color: var(--main-background);
-}
 
-@media (max-width: 1200px) {
-  .search {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .header {
+  @media (max-width: 1200px) {
     display: grid;
     grid-template-columns: 50% 50%;
     width: 100%;

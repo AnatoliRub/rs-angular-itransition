@@ -7,6 +7,11 @@
   margin-right: 0.625rem;
   transition: 1s;
 
+  @media (max-width: 1200px) {
+    grid-area: a;
+    justify-content: flex-start;
+  }
+
   &__link {
     height: 3.125rem;
   }
@@ -14,12 +19,5 @@
   &:hover {
     transform: scale(1.01);
     transition: 1s;
-  }
-}
-
-@media (max-width: 1200px) {
-  .logo {
-    grid-area: a;
-    justify-content: flex-start;
   }
 }
