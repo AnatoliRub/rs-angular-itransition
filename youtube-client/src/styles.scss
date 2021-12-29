@@ -1,4 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+@use '/src/scss/variables.scss';
+@import '/src/scss/mixins.scss';
 @import '~normalize.css';
 @import '@fontsource/roboto';
 
@@ -12,65 +13,4 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-/* Variables */
-
-/* Colors */
-$main-backgr: #e5e5e5;
-$popup-backgr: #f2f2f2;
-$blue: #2f80ed;
-$blue-light: #5ea2ff;
-$yellow: #f2c94c;
-$green: #27ae60;
-$red: #eb5757;
-$gray: #efefef;
-$gray-light: #e0e0e0;
-$gray-middle: #c4c4c4;
-$gray-dark: #b1b1b1;
-$black: #4f4f4f;
-$white: #ffffff;
-
-/* Mixins */
-@mixin label {
-  font-weight: bold;
-  font-size: 1.25rem;
-  line-height: 1.4375rem;
-}
-
-@mixin text {
-  font-weight: normal;
-  font-size: 0.75rem;
-  line-height: 0.875rem;
-}
-
-@mixin big-label {
-  font-weight: bold;
-  font-size: 1.5rem;
-  line-height: 1.75rem;
-}
-
-@mixin small-text {
-  font-weight: normal;
-  font-size: 0.625rem;
-  line-height: 0.75rem;
-}
-
-@mixin base-shadow($color) {
-  box-shadow: 0rem 0rem 0.5rem $color;
-}
-
-@mixin base-btn-behavior {
-  @include base-shadow($blue);
-
-  &:hover {
-    transition: 1s;
-    background-color: $blue-light;
-    @include base-shadow($blue-light);
-  }
-
-  &:active {
-    transition: 1s;
-    background-color: $gray-dark;
-    @include base-shadow($gray-dark);
-  }
 }
