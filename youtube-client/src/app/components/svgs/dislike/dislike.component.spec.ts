@@ -8,9 +8,8 @@ describe('DislikeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DislikeComponent ]
-    })
-    .compileComponents();
+      declarations: [DislikeComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

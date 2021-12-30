@@ -8,9 +8,8 @@ describe('LikeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LikeComponent ]
-    })
-    .compileComponents();
+      declarations: [LikeComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
