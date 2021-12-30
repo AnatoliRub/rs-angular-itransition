@@ -8,7 +8,14 @@
   align-items: center;
   right: rem(160);
 
-  @media (max-width: $second-resolution) {
+  @media (min-width: $width-md) and (max-width: $width-md-l) {
+    position: static;
+    transform: none;
+    margin-left: rem(20);
+    align-self: center;
+  }
+
+  @media (max-width: $width-md) {
     grid-area: c;
     transform: none;
     justify-content: flex-end;

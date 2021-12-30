@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
 
-  @media (max-width: $second-resolution) {
+  @media (max-width: $width-md-l) {
     grid-area: b;
     flex: 1;
     margin-left: auto;
