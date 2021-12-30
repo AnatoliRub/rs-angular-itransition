@@ -41,3 +41,11 @@
     @include base-shadow(var(--gray-dark));
   }
 }
+
+@mixin base-svg-icon-behavior {
+  &:hover {
+    & > path {
+      fill: var(--blue);
+    }
+  }
+}
