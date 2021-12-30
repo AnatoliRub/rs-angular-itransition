@@ -1,0 +1,43 @@
+@mixin label {
+  font-weight: bold;
+  font-size: 1.25rem;
+  line-height: 1.4375rem;
+}
+
+@mixin text {
+  font-weight: normal;
+  font-size: 0.75rem;
+  line-height: 0.875rem;
+}
+
+@mixin big-label {
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+}
+
+@mixin small-text {
+  font-weight: normal;
+  font-size: 0.625rem;
+  line-height: 0.75rem;
+}
+
+@mixin base-shadow($color) {
+  box-shadow: 0rem 0rem 0.5rem $color;
+}
+
+@mixin base-button-behavior {
+  @include base-shadow(var(--blue));
+
+  &:hover {
+    transition: 1s;
+    background-color: var(--blue-light);
+    @include base-shadow(var(--blue-light));
+  }
+
+  &:active {
+    transition: 1s;
+    background-color: var(--gray-dark);
+    @include base-shadow(var(--gray-dark));
+  }
+}

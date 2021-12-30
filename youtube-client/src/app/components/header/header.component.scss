@@ -1,0 +1,33 @@
+@import 'src/styles.scss';
+
+.search {
+  grid-area: b;
+  max-width: rem(570);
+  width: 100%;
+
+  @media (max-width: $second-resolution) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.header {
+  position: relative;
+  display: flex;
+  padding-top: rem(15);
+  padding-bottom: rem(15);
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-background);
+
+  @media (max-width: $second-resolution) {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 100%;
+    grid-template-areas:
+      'a c'
+      'b b';
+    padding-left: rem(30);
+    padding-right: rem(30);
+  }
+}

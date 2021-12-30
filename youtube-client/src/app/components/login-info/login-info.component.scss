@@ -1,0 +1,39 @@
+@import 'src/styles.scss';
+
+.login__account {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  display: flex;
+  align-items: center;
+  right: rem(160);
+
+  @media (max-width: $second-resolution) {
+    grid-area: c;
+    transform: none;
+    justify-content: flex-end;
+    align-items: center;
+    position: static;
+  }
+
+  &-title {
+    color: var(--black);
+    margin-right: rem(8);
+    @include text;
+  }
+
+  &-image-container {
+    display: flex;
+    padding: rem(2.4);
+    align-items: center;
+    border-radius: rem(4);
+    background-color: var(--blue);
+    @include base-button-behavior;
+    transition: 1s;
+
+    .fa-user-circle {
+      color: var(--white);
+      font-size: rem(18);
+    }
+  }
+}
