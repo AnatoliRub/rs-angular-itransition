@@ -1,0 +1,37 @@
+<div>
+  <div class="card__container">
+    <div class="card">
+      <div class="card__image-container">
+        <img src="{{ image }}" alt="preview" />
+      </div>
+      <div class="card__info">
+        <div class="card__info-item">
+          <div>
+            <app-view></app-view>
+          </div>
+          <p class="info-text">{{ views }}</p>
+        </div>
+        <div class="card__info-item">
+          <div>
+            <app-like></app-like>
+          </div>
+          <p class="info-text">{{ likes }}</p>
+        </div>
+        <div class="card__info-item">
+          <div>
+            <app-dislike></app-dislike>
+          </div>
+          <p class="info-text">{{ dislikes }}</p>
+        </div>
+        <div class="card__info-item">
+          <div>
+            <app-comment></app-comment>
+          </div>
+          <p class="info-text">{{ comments }}</p>
+        </div>
+      </div>
+      <h3 class="card__title">{{ title }}</h3>
+      <button class="card__button">more...</button>
+    </div>
+  </div>
+</div>
