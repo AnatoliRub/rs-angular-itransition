@@ -27,6 +27,7 @@
     color: var(--black);
     margin-right: rem(8);
     @include text;
+    margin-bottom: rem(0);
   }
 
   &-image-container {

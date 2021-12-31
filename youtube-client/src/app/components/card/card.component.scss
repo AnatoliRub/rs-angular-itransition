@@ -66,4 +66,5 @@
 
 .info-text {
   @include small-text;
+  margin-bottom: rem(0);
 }

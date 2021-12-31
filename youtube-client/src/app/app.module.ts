@@ -16,6 +16,7 @@ import { ViewComponent } from './components/svgs/view/view.component';
 import { LikeComponent } from './components/svgs/like/like.component';
 import { DislikeComponent } from './components/svgs/dislike/dislike.component';
 import { CommentComponent } from './components/svgs/comment/comment.component';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,13 @@ import { CommentComponent } from './components/svgs/comment/comment.component';
     DislikeComponent,
     CommentComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
