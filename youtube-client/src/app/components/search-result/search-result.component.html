@@ -1,0 +1,11 @@
+<div class="app-search-result__container">
+  <app-card
+    *ngFor="let n of posts"
+    [views]="n.statistics.viewCount"
+    [likes]="n.statistics.likeCount"
+    [dislikes]="n.statistics.dislikeCount"
+    [comments]="n.statistics.commentCount"
+    [image]="n.snippet.thumbnails.medium.url"
+    [title]="n.snippet.title"
+  ></app-card>
+</div>

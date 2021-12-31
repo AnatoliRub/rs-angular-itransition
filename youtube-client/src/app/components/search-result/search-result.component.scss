@@ -1,0 +1,42 @@
+@import 'src/styles.scss';
+
+.app-search-result {
+  &__container {
+    height: calc(100vh - rem(80));
+    overflow: auto;
+    padding-top: rem(30);
+    padding-bottom: rem(30);
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(4, auto);
+    gap: rem(30);
+
+    @media (max-width: $width-sm-l) {
+      grid-template-columns: repeat(1, auto);
+    }
+
+    @media (min-width: $width-sm-l) and (max-width: $width-md) {
+      grid-template-columns: repeat(2, auto);
+    }
+
+    @media (min-width: $width-md) and (max-width: $width-md-l) {
+      grid-template-columns: repeat(3, auto);
+    }
+
+    @media (min-width: $width-md-l) and (max-width: $width-md-ll) {
+      grid-template-columns: repeat(4, auto);
+    }
+
+    @media (min-width: $width-md-ll) {
+      grid-template-columns: repeat(4, auto);
+    }
+
+    &::-webkit-scrollbar {
+      width: rem(0);
+      background: transparent;
+    }
+  }
+}
