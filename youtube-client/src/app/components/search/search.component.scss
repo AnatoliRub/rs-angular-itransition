@@ -22,6 +22,8 @@
   }
 
   &__button {
+    @include text;
+    @include base-button-behavior;
     display: flex;
     align-items: center;
     text-align: center;
@@ -31,12 +33,11 @@
     outline: none;
     border-radius: rem(0) rem(4) rem(4) rem(0);
     background-color: var(--blue);
-    @include text;
-    @include base-button-behavior;
     transition: 1s;
   }
 
   &__settings-button {
+    @include base-button-behavior;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,7 +47,6 @@
     margin-left: rem(14.5);
     background: var(--blue);
     border-radius: rem(5);
-    @include base-button-behavior;
     transition: 1s;
 
     &:hover {

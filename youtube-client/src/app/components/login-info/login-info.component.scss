@@ -24,19 +24,19 @@
   }
 
   &-title {
+    @include text;
     color: var(--black);
     margin-right: rem(8);
-    @include text;
     margin-bottom: rem(0);
   }
 
   &-image-container {
+    @include base-button-behavior;
     display: flex;
     padding: rem(2.4);
     align-items: center;
     border-radius: rem(4);
     background-color: var(--blue);
-    @include base-button-behavior;
     transition: 1s;
 
     .fa-user-circle {
