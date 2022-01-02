@@ -18,6 +18,7 @@ import { DislikeComponent } from './components/svgs/dislike/dislike.component';
 import { CommentComponent } from './components/svgs/comment/comment.component';
 import { MaterialModule } from './material/material.module';
 import { SearchSettingsComponent } from './components/header/search-settings/search-settings.component';
+import { FilteringCriteriaComponent } from './components/filtering-criteria/filtering-criteria.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { SearchSettingsComponent } from './components/header/search-settings/sea
     DislikeComponent,
     CommentComponent,
     SearchSettingsComponent,
+    FilteringCriteriaComponent,
   ],
   imports: [
     BrowserModule,

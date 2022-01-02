@@ -2,7 +2,7 @@
 
 .app-search-result {
   &__container {
-    height: calc(100vh - rem(80));
+    height: calc(100vh - rem(80 + 50));
     overflow: auto;
     padding-top: rem(30);
     padding-bottom: rem(30);
