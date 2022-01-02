@@ -1,0 +1,38 @@
+@import 'src/styles.scss';
+
+.search {
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: $width-md-l) {
+    grid-area: b;
+    flex: 1;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__input {
+    display: block;
+    padding-left: rem(6);
+    width: 100%;
+    height: rem(24);
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+  }
+
+  &__button {
+    @include text;
+    @include base-button-behavior;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: rem(0) rem(22);
+    color: var(--white);
+    border: none;
+    outline: none;
+    border-radius: rem(0) rem(4) rem(4) rem(0);
+    background-color: var(--blue);
+    transition: 1s;
+  }
+}
