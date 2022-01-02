@@ -14,6 +14,5 @@ export class SearchResultComponent {
 
   constructor() {
     this.posts = this.json.items;
-    console.log(this.json.items);
   }
 }
