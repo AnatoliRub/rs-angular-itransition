@@ -7,7 +7,7 @@
   margin-right: rem(10);
   transition: 1s;
 
-  @media (max-width: $second-resolution) {
+  @media (max-width: $width-md) {
     grid-area: a;
     justify-content: flex-start;
   }

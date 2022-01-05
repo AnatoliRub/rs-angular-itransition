@@ -2,10 +2,10 @@
 
 .search {
   grid-area: b;
-  max-width: rem(570);
+  max-width: rem(510);
   width: 100%;
 
-  @media (max-width: $second-resolution) {
+  @media (max-width: $width-md) {
     margin-left: auto;
     margin-right: auto;
   }
@@ -20,7 +20,7 @@
   align-items: center;
   background-color: var(--main-background);
 
-  @media (max-width: $second-resolution) {
+  @media (max-width: $width-md) {
     display: grid;
     grid-template-columns: 50% 50%;
     width: 100%;

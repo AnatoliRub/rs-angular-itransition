@@ -1,0 +1,70 @@
+@import 'src/styles.scss';
+
+.card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--main-background);
+  padding: rem(20) rem(20) rem(10);
+  border-radius: rem(5);
+  border-bottom: rem(5) solid var(--blue);
+
+  &__info {
+    display: flex;
+    gap: rem(16);
+    margin-top: rem(21);
+    margin-bottom: rem(21);
+  }
+
+  &__info-item {
+    display: flex;
+    align-items: center;
+    gap: rem(3);
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: rem(123);
+    width: rem(223);
+    overflow: hidden;
+
+    & > img {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    @include label;
+    color: var(--black);
+    align-self: flex-end;
+    margin-bottom: rem(59);
+    max-width: rem(203);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__button {
+    @include text;
+    @include base-button-behavior;
+    color: var(--white);
+    border: none;
+    outline: none;
+    height: rem(32);
+    background-color: var(--blue);
+    border-radius: rem(5);
+    width: rem(120);
+  }
+}
+
+.info-text {
+  @include small-text;
+  margin-bottom: rem(0);
+}

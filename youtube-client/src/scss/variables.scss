@@ -12,8 +12,14 @@
   --gray-light: #e0e0e0;
   --gray-middle: #c4c4c4;
   --gray-dark: #b1b1b1;
+  --gray-darknest: #929292;
   --black: #4f4f4f;
   --white: #ffffff;
 }
 
-$second-resolution: rem(1200);
+$width-lg: rem(1920);
+$width-md-ll: rem(1600);
+$width-md-l: rem(1280);
+$width-md: rem(1024);
+$width-sm-l: rem(768);
+$width-sm: rem(440);
