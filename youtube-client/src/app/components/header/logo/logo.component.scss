@@ -1,0 +1,23 @@
+@import 'src/styles.scss';
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: rem(10);
+  transition: 1s;
+
+  @media (max-width: $width-md) {
+    grid-area: a;
+    justify-content: flex-start;
+  }
+
+  &__link {
+    height: rem(50);
+  }
+
+  &:hover {
+    transform: scale(1.01);
+    transition: 1s;
+  }
+}

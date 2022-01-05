@@ -1,0 +1,63 @@
+@import 'src/styles.scss';
+
+.search-settings {
+  @include text;
+  background-color: var(--main-background);
+  display: flex;
+  justify-content: center;
+
+  &__wrap {
+    display: flex;
+    max-width: rem(570);
+    width: 100%;
+    margin-top: rem(11);
+    margin-bottom: rem(11);
+
+    @media (max-width: $width-md-l) {
+      max-width: fit-content;
+      justify-content: center;
+      padding-left: rem(30);
+      padding-right: rem(30);
+    }
+  }
+
+  &__title {
+    color: var(--gray-darknest);
+    margin-bottom: rem(0);
+    margin-right: rem(11);
+    white-space: nowrap;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    gap: rem(21);
+  }
+
+  &__input {
+    display: none;
+    &:checked + .search-settings__label {
+      text-decoration: none;
+    }
+  }
+
+  &__label {
+    color: var(--blue);
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+
+  &__word-input {
+    outline: none;
+    border: none;
+    margin-left: rem(10);
+    width: 100%;
+    height: rem(13);
+    margin-right: auto;
+  }
+}
+
+.word {
+  display: flex;
+}

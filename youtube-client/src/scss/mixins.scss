@@ -1,0 +1,51 @@
+@mixin label {
+  font-weight: bold;
+  font-size: rem(20);
+  line-height: rem(23);
+}
+
+@mixin text {
+  font-weight: normal;
+  font-size: rem(12);
+  line-height: rem(14);
+}
+
+@mixin big-label {
+  font-weight: bold;
+  font-size: rem(24);
+  line-height: rem(28);
+}
+
+@mixin small-text {
+  font-weight: normal;
+  font-size: rem(10);
+  line-height: rem(12);
+}
+
+@mixin base-shadow($color) {
+  box-shadow: rem(0) rem(0) rem(8) $color;
+}
+
+@mixin base-button-behavior {
+  @include base-shadow(var(--blue));
+
+  &:hover {
+    transition: 1s;
+    background-color: var(--blue-light);
+    @include base-shadow(var(--blue-light));
+  }
+
+  &:active {
+    transition: 1s;
+    background-color: var(--gray-dark);
+    @include base-shadow(var(--gray-dark));
+  }
+}
+
+@mixin base-svg-icon-behavior {
+  &:hover {
+    & > path {
+      fill: var(--blue);
+    }
+  }
+}

@@ -1,0 +1,5 @@
+@import 'src/styles.scss';
+
+.comment {
+  @include base-svg-icon-behavior;
+}
