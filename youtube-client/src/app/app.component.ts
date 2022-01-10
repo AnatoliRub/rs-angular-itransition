@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IFilterData } from './components/filtering-criteria/filtering-criteria.component';
+import { Filter, IFilterData, Order } from 'src/types/filtering-criteria-types';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ export class AppComponent {
 
   searchString: string = '';
 
-  filterData: IFilterData = { order: '', filterType: '' };
+  filterData: IFilterData = { order: Order.desc, filterType: Filter.default };
 
   showSettings() {
     this.isShowSettings = !this.isShowSettings;
@@ -28,6 +28,5 @@ export class AppComponent {
 
   getFilterData(value: IFilterData) {
     this.filterData = { ...value };
-    console.log(this.filterData);
   }
 }

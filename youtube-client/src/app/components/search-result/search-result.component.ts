@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Filter, IFilterData, Order } from 'src/types/filtering-criteria-types';
 import { Post, YoutubeData } from 'src/types/youtube-data';
-import { IFilterData } from '../filtering-criteria/filtering-criteria.component';
 import * as Data from './data.json';
 
 @Component({
@@ -11,7 +11,7 @@ import * as Data from './data.json';
 export class SearchResultComponent {
   @Input() searchString = '';
 
-  @Input() filterData: IFilterData = { order: '', filterType: '' };
+  @Input() filterData: IFilterData = { order: Order.desc, filterType: Filter.default };
 
   json: YoutubeData = Data;
 
