@@ -1,28 +1,30 @@
 <div>
   <div class="card__container">
-    <div class="card">
+    <div class="card" [ngClass]="setCardBorderColor()">
       <div class="card__image-container">
-        <img src="{{ image }}" alt="preview" />
+        <img [src]="post.snippet.thumbnails.medium.url" alt="preview" />
       </div>
       <div class="card__info">
         <div class="card__info-item">
           <app-view></app-view>
-          <p class="info-text">{{ views }}</p>
+          <p class="info-text">{{ post.statistics.viewCount }}</p>
         </div>
         <div class="card__info-item">
           <app-like></app-like>
-          <p class="info-text">{{ likes }}</p>
+          <p class="info-text">{{ post.statistics.likeCount }}</p>
         </div>
         <div class="card__info-item">
           <app-dislike></app-dislike>
-          <p class="info-text">{{ dislikes }}</p>
+          <p class="info-text">{{ post.statistics.dislikeCount }}</p>
         </div>
         <div class="card__info-item">
           <app-comment></app-comment>
-          <p class="info-text">{{ comments }}</p>
+          <p class="info-text">{{ post.statistics.commentCount }}</p>
         </div>
       </div>
-      <h3 class="card__title" matTooltip="{{ title }}">{{ title }}</h3>
+      <h3 class="card__title" matTooltip="{{ post.snippet.title }}">
+        {{ post.snippet.title }}
+      </h3>
       <button class="card__button">more...</button>
     </div>
   </div>

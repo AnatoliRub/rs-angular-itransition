@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Post } from 'src/types/youtube-data';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -7,15 +8,68 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
-  @Input() views: string = '';
+  @Input() post: Post = {
+    kind: '',
+    etag: '',
+    id: '',
+    snippet: {
+      channelTitle: '',
+      description: '',
+      publishedAt: '',
+      title: '',
+      thumbnails: {
+        default: {
+          url: '',
+          width: 0,
+          height: 0,
+        },
+        high: {
+          url: '',
+          width: 0,
+          height: 0,
+        },
+        maxres: {
+          url: '',
+          width: 0,
+          height: 0,
+        },
+        medium: {
+          url: '',
+          width: 0,
+          height: 0,
+        },
+        standard: {
+          url: '',
+          width: 0,
+          height: 0,
+        },
+      },
+    },
+    statistics: {
+      commentCount: '',
+      dislikeCount: '',
+      likeCount: '',
+      viewCount: '',
+    },
+  };
 
-  @Input() likes: string = '';
+  setCardBorderColor() {
+    const dateNow = new Date();
+    const datePublish = new Date(this.post.snippet.publishedAt);
+    const difference = Math.floor((dateNow.getTime() - datePublish.getTime()) / 86400000);
 
-  @Input() dislikes: string = '';
+    if (difference < 7) {
+      return ['blue'];
+    }
 
-  @Input() comments: string = '';
+    if (difference < 30) {
+      return ['green'];
+    }
 
-  @Input() image: string = '';
+    if (difference < 180) {
+      return ['yellow'];
+    }
 
-  @Input() title: string = '';
+    return ['red'];
+  }
 }
