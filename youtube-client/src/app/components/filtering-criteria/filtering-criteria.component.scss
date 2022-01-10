@@ -42,6 +42,10 @@
     }
   }
 
+  &__item {
+    position: relative;
+  }
+
   &__label {
     color: var(--blue);
     text-decoration: underline;
@@ -60,4 +64,24 @@
 
 .word {
   display: flex;
+}
+
+.fa-sort-down {
+  position: absolute;
+  top: rem(-1);
+  right: rem(-9);
+  color: var(--blue);
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.rotate {
+  top: rem(3);
+  transform: rotate(180deg);
+}
+
+.inactive {
+  background-color: var(--gray);
 }
