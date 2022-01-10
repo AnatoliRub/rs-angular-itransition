@@ -1,5 +1,10 @@
-<div class="search">
-  <input class="search__input" type="text" placeholder="What are you want to find out?" />
-  <button class="search__button" type="button">search</button>
-  <app-search-settings></app-search-settings>
-</div>
+<form class="search" (submit)="displayResults()">
+  <input
+    class="search__input"
+    type="text"
+    placeholder="What are you want to find out?"
+    [(ngModel)]="searchString"
+    name="search"
+  />
+  <button class="search__button" type="submit">search</button>
+</form>

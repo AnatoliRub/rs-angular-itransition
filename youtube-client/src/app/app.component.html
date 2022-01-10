@@ -1,3 +1,13 @@
-<app-header></app-header>
-<app-filtering-criteria></app-filtering-criteria>
-<app-search-result> </app-search-result>
+<app-header
+  (toggleSettings)="showSettings()"
+  (showSearchingResults)="showResults($event)"
+></app-header>
+<app-filtering-criteria
+  *ngIf="isShowSettings"
+  (filterData)="getFilterData($event)"
+></app-filtering-criteria>
+<app-search-result
+  *ngIf="isShowContent"
+  [searchString]="searchString"
+  [filterData]="filterData"
+></app-search-result>

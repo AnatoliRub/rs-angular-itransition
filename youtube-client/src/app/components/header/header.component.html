@@ -1,5 +1,6 @@
 <div class="header">
-  <app-logo></app-logo>
-  <app-search class="search"></app-search>
-  <app-login></app-login>
+  <app-logo class="logo"></app-logo>
+  <app-search class="search" (showResults)="displaySearchingResult($event)"></app-search>
+  <app-search-settings class="search-settings" (toggle)="showSettings()"></app-search-settings>
+  <app-login class="login__account"></app-login>
 </div>

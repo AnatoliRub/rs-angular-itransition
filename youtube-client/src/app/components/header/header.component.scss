@@ -1,13 +1,54 @@
 @import 'src/styles.scss';
 
+.logo {
+  display: flex;
+  grid-area: a;
+  align-items: center;
+  justify-content: center;
+  margin-right: rem(10);
+  transition: 1s;
+
+  @media (max-width: $width-md) {
+    justify-content: flex-start;
+  }
+}
+
 .search {
   grid-area: b;
-  max-width: rem(510);
+  max-width: rem(510 - 34);
   width: 100%;
 
   @media (max-width: $width-md) {
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+.search-settings {
+  grid-area: d;
+}
+
+.login__account {
+  grid-area: c;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  display: flex;
+  align-items: center;
+  right: rem(160);
+
+  @media (min-width: $width-md) and (max-width: $width-md-l) {
+    position: static;
+    transform: none;
+    margin-left: rem(20);
+    align-self: center;
+  }
+
+  @media (max-width: $width-md) {
+    transform: none;
+    justify-content: flex-end;
+    align-items: center;
+    position: static;
   }
 }
 
@@ -22,11 +63,11 @@
 
   @media (max-width: $width-md) {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 50% calc(50% - rem(40)) rem(40);
     width: 100%;
     grid-template-areas:
-      'a c'
-      'b b';
+      'a c c'
+      'b b d';
     padding-left: rem(30);
     padding-right: rem(30);
   }
