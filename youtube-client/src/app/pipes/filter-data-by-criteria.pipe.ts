@@ -7,25 +7,24 @@ import { Post } from 'src/types/youtube-data';
 })
 export class FilterDataByCriteriaPipe implements PipeTransform {
   transform = (posts: Post[], type: Filter, order?: string, word?: string): Post[] => {
-
     switch (type) {
-      case Filter.date: {
+      case Filter.Date: {
         return posts.sort((a, b) =>
-          order === Order.desc
-            ? new Date(a.snippet.publishedAt).getTime() - new Date(b.snippet.publishedAt).getTime()
-            : new Date(b.snippet.publishedAt).getTime() - new Date(a.snippet.publishedAt).getTime(),
+          order === Order.Desc
+            ? new Date(b.snippet.publishedAt).getTime() - new Date(a.snippet.publishedAt).getTime()
+            : new Date(a.snippet.publishedAt).getTime() - new Date(b.snippet.publishedAt).getTime(),
         );
       }
 
-      case Filter.view: {
+      case Filter.View: {
         return posts.sort((a, b) =>
-          order === Order.desc
+          order === Order.Desc
             ? Number(a.statistics.viewCount) - Number(b.statistics.viewCount)
             : Number(b.statistics.viewCount) - Number(a.statistics.viewCount),
         );
       }
 
-      case Filter.word: {
+      case Filter.Word: {
         return posts.filter((post) =>
           post.snippet.title.toLowerCase().includes(word!.toLowerCase()),
         );

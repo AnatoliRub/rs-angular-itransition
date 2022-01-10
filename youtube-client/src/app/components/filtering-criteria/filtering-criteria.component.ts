@@ -41,7 +41,6 @@ export class FilteringCriteriaComponent implements OnDestroy {
     this.currentFilterState = (event.target as HTMLLabelElement).htmlFor;
     console.log(this.currentFilterState);
     switch (this.currentFilterState) {
-
       case Filter.Date: {
         this.setAndResetValues(Filter.Date);
         this.filterData.emit({

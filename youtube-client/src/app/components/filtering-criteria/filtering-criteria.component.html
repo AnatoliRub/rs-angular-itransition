@@ -5,7 +5,8 @@
       <li class="search-settings__item">
         <input class="search-settings__input" value="date" id="date" type="radio" name="filter" />
         <label class="search-settings__label" for="date">date</label>
-        <fa-icon *ngIf="currentFilterState == 'date'"
+        <fa-icon
+          *ngIf="currentFilterState === 'date'"
           [ngClass]="changeOrder()"
           class="fa-sort-down"
           [icon]="faSortDown"
@@ -14,7 +15,12 @@
       <li class="search-settings__item">
         <input class="search-settings__input" type="radio" value="view" id="view" name="filter" />
         <label class="search-settings__label" for="view">count of views</label>
-        <fa-icon *ngIf="currentFilterState == 'view'" class="fa-sort-down" [ngClass]="changeOrder()" [icon]="faSortDown"></fa-icon>
+        <fa-icon
+          *ngIf="currentFilterState === 'view'"
+          class="fa-sort-down"
+          [ngClass]="changeOrder()"
+          [icon]="faSortDown"
+        ></fa-icon>
       </li>
       <li class="search-settings__item word">
         <input class="search-settings__input" type="radio" value="word" id="word" name="filter" />

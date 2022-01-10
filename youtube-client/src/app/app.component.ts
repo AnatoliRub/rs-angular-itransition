@@ -12,7 +12,7 @@ export class AppComponent {
 
   searchString: string = '';
 
-  filterData: IFilterData = { order: Order.desc, filterType: Filter.default };
+  filterData: IFilterData = { order: Order.Desc, filterType: Filter.Default };
 
   showSettings() {
     this.isShowSettings = !this.isShowSettings;

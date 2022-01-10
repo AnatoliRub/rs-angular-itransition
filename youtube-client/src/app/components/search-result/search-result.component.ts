@@ -11,7 +11,7 @@ import * as Data from './data.json';
 export class SearchResultComponent {
   @Input() searchString = '';
 
-  @Input() filterData: IFilterData = { order: Order.desc, filterType: Filter.default };
+  @Input() filterData: IFilterData = { order: Order.Desc, filterType: Filter.Default };
 
   json: YoutubeData = Data;
 

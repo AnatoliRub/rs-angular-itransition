@@ -1,13 +1,13 @@
 export enum Order {
-  desc = 'desc',
-  esc = 'asc',
+  Desc = 'desc',
+  Asc = 'asc',
 }
 
 export enum Filter {
-  date = 'date',
-  view = 'view',
-  word = 'word',
-  default = 'default',
+  Date = 'date',
+  View = 'view',
+  Word = 'word',
+  Default = 'default',
 }
 
 export interface IFilterData {
