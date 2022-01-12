@@ -14,14 +14,12 @@ export class AppComponent {
 
   filterData: IFilterData = { order: Order.Desc, filterType: Filter.Default };
 
-  showSettings() {
+  toggleSettings() {
     this.isShowSettings = !this.isShowSettings;
   }
 
   showResults(value: string) {
-    if (!this.isShowContent) {
-      this.isShowContent = !this.isShowContent;
-    }
+    this.isShowContent = !this.isShowContent ? !this.isShowContent : this.isShowContent;
 
     this.searchString = value;
   }
