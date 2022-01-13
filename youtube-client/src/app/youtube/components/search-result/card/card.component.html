@@ -4,24 +4,7 @@
       <div class="card__image-container">
         <img [src]="post!.snippet.thumbnails.medium.url" alt="preview" />
       </div>
-      <div class="card__info">
-        <div class="card__info-item">
-          <app-view></app-view>
-          <p class="info-text">{{ post!.statistics.viewCount }}</p>
-        </div>
-        <div class="card__info-item">
-          <app-like></app-like>
-          <p class="info-text">{{ post!.statistics.likeCount }}</p>
-        </div>
-        <div class="card__info-item">
-          <app-dislike></app-dislike>
-          <p class="info-text">{{ post!.statistics.dislikeCount }}</p>
-        </div>
-        <div class="card__info-item">
-          <app-comment></app-comment>
-          <p class="info-text">{{ post!.statistics.commentCount }}</p>
-        </div>
-      </div>
+      <app-info [statistics]="post!.statistics"></app-info>
       <h3 class="card__title" matTooltip="{{ post!.snippet.title }}">
         {{ post!.snippet.title }}
       </h3>
