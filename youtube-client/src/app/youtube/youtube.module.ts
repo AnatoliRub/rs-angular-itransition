@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SearchResultComponent } from './components/search-result/search-result.component';
+import { SearchResultPageComponent } from './pages/search-result-page/search-result-page.component';
 import { CommentComponent } from '../components/svgs/comment/comment.component';
 import { DislikeComponent } from '../components/svgs/dislike/dislike.component';
 import { LikeComponent } from '../components/svgs/like/like.component';
 import { ViewComponent } from '../components/svgs/view/view.component';
-import { CardComponent } from './components/search-result/card/card.component';
+import { CardComponent } from './components/card/card.component';
 import { MaterialModule } from '../material/material.module';
 import { FilterDataByCriteriaPipe } from './pipes/filter-data-by-criteria.pipe';
 import { SearchByWordPipe } from './pipes/search-by-word.pipe';
-import { DetailedPageComponent } from './components/detailed-page/detailed-page.component';
+import { DetailedPageComponent } from './pages/detailed-page/detailed-page.component';
 import { InfoItemComponent } from './components/info-item/info-item.component';
 import { InfoComponent } from './components/info/info.component';
 
 @NgModule({
   declarations: [
-    SearchResultComponent,
+    SearchResultPageComponent,
     CardComponent,
     ViewComponent,
     LikeComponent,
@@ -28,7 +28,7 @@ import { InfoComponent } from './components/info/info.component';
     InfoItemComponent,
     InfoComponent,
   ],
-  exports: [SearchResultComponent, DetailedPageComponent],
+  exports: [SearchResultPageComponent, DetailedPageComponent],
   imports: [CommonModule, MaterialModule, FontAwesomeModule],
 })
 export class YoutubeModule {}
