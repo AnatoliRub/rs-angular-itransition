@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { CoreModule } from './core/core.module';
 import { YoutubeModule } from './youtube/youtube.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { YoutubeModule } from './youtube/youtube.module';
     MaterialModule,
     CoreModule,
     YoutubeModule,
+    AuthModule,
   ],
   bootstrap: [AppComponent],
 })
