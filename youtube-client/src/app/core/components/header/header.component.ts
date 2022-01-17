@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { SearchServiceService } from '../../services/search-service.service';
 
 @Component({
   selector: 'app-header',
@@ -6,15 +8,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Output() toggleSettings = new EventEmitter<void>();
+  public isShow: Observable<boolean>;
 
-  @Output() showSearchingResults = new EventEmitter<string>();
-
-  showSettings() {
-    this.toggleSettings.emit();
-  }
-
-  displaySearchingResult(value: string) {
-    this.showSearchingResults.emit(value);
+  constructor(private searchService: SearchServiceService) {
+    this.isShow = this.searchService.isShowSettings;
   }
 }
