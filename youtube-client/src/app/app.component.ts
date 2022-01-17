@@ -1,9 +1,30 @@
 import { Component } from '@angular/core';
+import { Filter, IFilterData, Order } from 'src/types/filtering-criteria-types';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'youtube-client';
+  isShowSettings: boolean = false;
+
+  isShowContent: boolean = false;
+
+  searchString: string = '';
+
+  filterData: IFilterData = { order: Order.Desc, filterType: Filter.Default };
+
+  toggleSettings() {
+    this.isShowSettings = !this.isShowSettings;
+  }
+
+  showResults(value: string) {
+    this.isShowContent = !this.isShowContent ? !this.isShowContent : this.isShowContent;
+
+    this.searchString = value;
+  }
+
+  getFilterData(value: IFilterData) {
+    this.filterData = { ...value };
+  }
 }

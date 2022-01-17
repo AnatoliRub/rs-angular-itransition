@@ -1,19 +1,40 @@
 <div class="search-settings">
   <div class="search-settings__wrap">
     <h3 class="search-settings__title">Sorting by:</h3>
-    <ul class="search-settings__list">
+    <ul class="search-settings__list" (mouseup)="setFilter($event)">
       <li class="search-settings__item">
-        <input class="search-settings__input" type="radio" id="date" name="filter" />
+        <input class="search-settings__input" value="date" id="date" type="radio" name="filter" />
         <label class="search-settings__label" for="date">date</label>
+        <fa-icon
+          *ngIf="currentFilterState === 'date'"
+          [ngClass]="changeOrder()"
+          class="fa-sort-down"
+          [icon]="faSortDown"
+        ></fa-icon>
       </li>
       <li class="search-settings__item">
-        <input class="search-settings__input" type="radio" id="view" name="filter" />
+        <input class="search-settings__input" type="radio" value="view" id="view" name="filter" />
         <label class="search-settings__label" for="view">count of views</label>
+        <fa-icon
+          *ngIf="currentFilterState === 'view'"
+          class="fa-sort-down"
+          [ngClass]="changeOrder()"
+          [icon]="faSortDown"
+        ></fa-icon>
       </li>
       <li class="search-settings__item word">
-        <input class="search-settings__input" type="radio" id="word" name="filter" />
+        <input class="search-settings__input" type="radio" value="word" id="word" name="filter" />
         <label class="search-settings__label" for="word">by word or sentence</label>
-        <input class="search-settings__word-input" type="text" />
+        <input
+          class="search-settings__word-input"
+          [readonly]="isReadOnly"
+          [class.inactive]="isReadOnly === 'readonly'"
+          [value]="filterWord"
+          (input)="filterResultsByWord($event)"
+          type="text"
+          name="word"
+          id="word"
+        />
       </li>
     </ul>
   </div>

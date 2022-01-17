@@ -3,9 +3,9 @@
 .search {
   display: flex;
   justify-content: center;
+  grid-area: b;
 
   @media (max-width: $width-md-l) {
-    grid-area: b;
     flex: 1;
     margin-left: auto;
     margin-right: auto;

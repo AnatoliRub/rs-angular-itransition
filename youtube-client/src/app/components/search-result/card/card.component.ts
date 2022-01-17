@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Post } from 'src/types/youtube-data';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -7,15 +8,29 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
-  @Input() views: string = '';
+  @Input() post: Post | undefined;
 
-  @Input() likes: string = '';
+  constructor() {
+    this.post = undefined;
+  }
 
-  @Input() dislikes: string = '';
+  setCardBorderColor() {
+    const dateNow = new Date();
+    const datePublish = new Date(this.post!.snippet.publishedAt);
+    const difference = Math.floor((dateNow.getTime() - datePublish.getTime()) / 86400000);
 
-  @Input() comments: string = '';
+    if (difference < 7) {
+      return ['blue'];
+    }
 
-  @Input() image: string = '';
+    if (difference < 30) {
+      return ['green'];
+    }
 
-  @Input() title: string = '';
+    if (difference < 180) {
+      return ['yellow'];
+    }
+
+    return ['red'];
+  }
 }

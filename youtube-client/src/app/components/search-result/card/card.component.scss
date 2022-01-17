@@ -7,7 +7,22 @@
   background-color: var(--main-background);
   padding: rem(20) rem(20) rem(10);
   border-radius: rem(5);
-  border-bottom: rem(5) solid var(--blue);
+
+  &.green {
+    border-bottom: rem(5) solid var(--green);
+  }
+
+  &.blue {
+    border-bottom: rem(5) solid var(--blue);
+  }
+
+  &.red {
+    border-bottom: rem(5) solid var(--red);
+  }
+
+  &.yellow {
+    border-bottom: rem(5) solid var(--yellow);
+  }
 
   &__info {
     display: flex;
