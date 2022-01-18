@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SearchServiceService } from 'src/app/core/services/search-service.service';
-import { Filter, IFilterData, Order } from 'src/types/filtering-criteria-types';
-import { Post, YoutubeData } from 'src/types/youtube-data';
-import * as Data from './data.json';
+import { IFilterData } from 'src/types/filtering-criteria-types';
+import { Post } from 'src/types/youtube-data';
+import { CardService } from '../../services/card.service';
 
 @Component({
   selector: 'app-search-result',
@@ -11,15 +11,11 @@ import * as Data from './data.json';
   styleUrls: ['./search-result-page.component.scss'],
 })
 export class SearchResultPageComponent {
-  @Input() filterData: IFilterData = { order: Order.Desc, filterType: Filter.Default };
+  posts: Observable<Post[]> = this.cardServise.cardsInfo;
 
-  json: YoutubeData = Data;
+  searchString: Observable<string> = this.searchService.searchWord;
 
-  posts: Post[] = [];
+  filter: Observable<IFilterData> = this.searchService.filter;
 
-  searchString: Observable<string> = this.serchService.searchWord;
-
-  constructor(private serchService: SearchServiceService) {
-    this.posts = this.json.items;
-  }
+  constructor(private searchService: SearchServiceService, private cardServise: CardService) {}
 }
