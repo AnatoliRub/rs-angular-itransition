@@ -11,11 +11,11 @@ import { CardService } from '../../services/card.service';
   styleUrls: ['./search-result-page.component.scss'],
 })
 export class SearchResultPageComponent {
-  posts: Observable<Post[]> = this.cardServise.cardsInfo;
+  posts$: Observable<Post[]> = this.cardServise.cardsInfo;
 
-  searchString: Observable<string> = this.searchService.searchWord;
+  searchString$: Observable<string> = this.searchService.searchWord;
 
-  filter: Observable<IFilterData> = this.searchService.filter;
+  filter$: Observable<IFilterData> = this.searchService.filter;
 
   constructor(private searchService: SearchServiceService, private cardServise: CardService) {}
 }

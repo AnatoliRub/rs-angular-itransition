@@ -1,7 +1,7 @@
 <section class="app-search-result__container">
-  <ng-container *ngIf="searchString | async as search">
-    <ng-container *ngIf="filter | async as filter">
-      <ng-container *ngIf="posts | async as posts">
+  <ng-container *ngIf="searchString$ | async as search">
+    <ng-container *ngIf="filter$ | async as filter">
+      <ng-container *ngIf="posts$ | async as posts">
         <app-card
           *ngFor="
             let post of posts
