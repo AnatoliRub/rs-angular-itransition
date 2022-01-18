@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Filter, IFilterData } from 'src/types/filtering-criteria-types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SearchServiceService {
-  toggleSearchSettings: boolean = false;
+  #toggleSearchSettings: boolean = false;
 
-  #isShowSettings = new BehaviorSubject(this.toggleSearchSettings);
+  #isShowSettings = new BehaviorSubject(this.#toggleSearchSettings);
 
   public isShowSettings = this.#isShowSettings.asObservable();
 
@@ -15,11 +16,17 @@ export class SearchServiceService {
 
   public searchWord = this.#searchWord.asObservable();
 
-  private _filterWord = '';
+  #filter = new BehaviorSubject<IFilterData>({ filterType: Filter.Default });
+
+  public filter = this.#filter.asObservable();
+
+  setFilter(value: IFilterData) {
+    this.#filter.next(value);
+  }
 
   toggleSettings() {
-    this.toggleSearchSettings = !this.toggleSearchSettings;
-    this.#isShowSettings.next(this.toggleSearchSettings);
+    this.#toggleSearchSettings = !this.#toggleSearchSettings;
+    this.#isShowSettings.next(this.#toggleSearchSettings);
   }
 
   setSearchWord(value: string) {

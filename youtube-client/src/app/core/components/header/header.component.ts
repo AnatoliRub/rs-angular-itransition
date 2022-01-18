@@ -8,9 +8,7 @@ import { SearchServiceService } from '../../services/search-service.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  public isShow: Observable<boolean>;
+  public isShow: Observable<boolean> = this.searchService.isShowSettings;
 
-  constructor(private searchService: SearchServiceService) {
-    this.isShow = this.searchService.isShowSettings;
-  }
+  constructor(private searchService: SearchServiceService) {}
 }

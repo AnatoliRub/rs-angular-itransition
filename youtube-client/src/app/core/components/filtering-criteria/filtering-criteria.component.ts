@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
-import { Filter, IFilterData, Order } from 'src/types/filtering-criteria-types';
+import { Filter, Order } from 'src/types/filtering-criteria-types';
+import { SearchServiceService } from '../../services/search-service.service';
 
 @Component({
   selector: 'app-filtering-criteria',
@@ -20,7 +21,7 @@ export class FilteringCriteriaComponent implements OnDestroy {
 
   @Input() filterWord = '';
 
-  @Output() filterData = new EventEmitter<IFilterData>();
+  constructor(private searchService: SearchServiceService) {}
 
   toggleOrder() {
     if (this.previousFilterState === this.currentFilterState) {
@@ -43,7 +44,7 @@ export class FilteringCriteriaComponent implements OnDestroy {
     switch (this.currentFilterState) {
       case Filter.Date: {
         this.setAndResetValues(Filter.Date);
-        this.filterData.emit({
+        this.searchService.setFilter({
           order: this.order,
           filterType: Filter.Date,
         });
@@ -52,7 +53,7 @@ export class FilteringCriteriaComponent implements OnDestroy {
 
       case Filter.View: {
         this.setAndResetValues(Filter.View);
-        this.filterData.emit({
+        this.searchService.setFilter({
           order: this.order,
           filterType: Filter.View,
         });
@@ -70,7 +71,7 @@ export class FilteringCriteriaComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.filterData.emit({
+    this.searchService.setFilter({
       filterType: this.previousFilterState,
     });
   }
@@ -78,7 +79,7 @@ export class FilteringCriteriaComponent implements OnDestroy {
   filterResultsByWord(event: Event) {
     const input = event.target as HTMLInputElement;
     this.filterWord = input.value;
-    this.filterData.emit({
+    this.searchService.setFilter({
       order: this.order,
       filterType: Filter.Word,
       filterWord: this.filterWord,
