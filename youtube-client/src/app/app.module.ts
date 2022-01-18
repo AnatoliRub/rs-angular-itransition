@@ -8,9 +8,11 @@ import { MaterialModule } from './material/material.module';
 import { CoreModule } from './core/core.module';
 import { YoutubeModule } from './youtube/youtube.module';
 import { AuthModule } from './auth/auth.module';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { ErrorComponent } from './components/svgs/error/error.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ErrorPageComponent, ErrorComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,
