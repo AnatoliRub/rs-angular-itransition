@@ -14,10 +14,14 @@ export class DetailedPageComponent implements OnInit {
 
   post?: Post;
 
-  constructor(private route: ActivatedRoute, private cardService: CardService, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private cardService: CardService,
+    private router: Router,
+  ) {}
 
   goBack() {
-      this.router.navigate(['/']);
+    this.router.navigate(['/']);
   }
 
   ngOnInit(): void {

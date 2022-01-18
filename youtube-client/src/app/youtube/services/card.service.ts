@@ -16,6 +16,6 @@ export class CardService {
   public cardsInfo = this.#cardsInfo.asObservable();
 
   getById(id: string) {
-    return this.#posts.find(post => post.id === id);
+    return this.#posts.find((post) => post.id === id);
   }
 }

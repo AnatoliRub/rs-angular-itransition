@@ -1,21 +1,25 @@
 <div class="detail" *ngIf="post">
   <div class="detail__image-container">
-    <img class="detail__image" [src]="post.snippet.thumbnails.maxres.url" alt="{{ post.snippet.title }}" />
+    <img
+      class="detail__image"
+      [src]="post.snippet.thumbnails.maxres.url"
+      alt="{{ post.snippet.title }}"
+    />
   </div>
   <div class="detail__information">
     <div class="detail__information-title">
-      <div class="detail__title" matTooltip="{{ post.snippet.title }}">{{ post.snippet.title }}</div>
-      <div class="detail__date">{{ post.snippet.publishedAt | date:'EEEE, MMMM d, y'}}</div>
+      <div class="detail__title" matTooltip="{{ post.snippet.title }}">
+        {{ post.snippet.title }}
+      </div>
+      <div class="detail__date">{{ post.snippet.publishedAt | date: 'EEEE, MMMM d, y' }}</div>
     </div>
     <div class="detail__description">
       <h3 class="detail__description-title">Description:</h3>
       <p class="detail__description-text">
-        {{post.snippet.description}}
+        {{ post.snippet.description }}
       </p>
     </div>
-    <app-info
-      [statistics]="post.statistics"
-    ></app-info>
+    <app-info [statistics]="post.statistics"></app-info>
   </div>
   <div class="detail__back-button" (click)="goBack()">
     <fa-icon class="fa-chevron-left" [icon]="faChevronLeft"></fa-icon>
