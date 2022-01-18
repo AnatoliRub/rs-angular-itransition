@@ -43,6 +43,10 @@
 
   &__title {
     @include big-label;
+    max-width: rem(220);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &__date {
