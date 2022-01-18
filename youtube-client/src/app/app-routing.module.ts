@@ -7,7 +7,7 @@ import { SearchResultPageComponent } from './youtube/pages/search-result-page/se
 const routes: Routes = [
   { path: '', component: SearchResultPageComponent },
   { path: 'login', component: LoginPageComponent },
-  { path: 'info', component: DetailedPageComponent },
+  { path: 'detail/:id', component: DetailedPageComponent },
 ];
 
 @NgModule({

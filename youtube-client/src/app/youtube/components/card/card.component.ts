@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Post } from 'src/types/youtube-data';
 
 @Component({
@@ -8,10 +9,12 @@ import { Post } from 'src/types/youtube-data';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
-  @Input() post: Post | undefined;
+  @Input() post?: Post;
 
-  constructor() {
-    this.post = undefined;
+  constructor(private router: Router) {}
+
+  goToPage() {
+    this.router.navigate(['/detail', this.post?.id]);
   }
 
   setCardBorderColor() {
