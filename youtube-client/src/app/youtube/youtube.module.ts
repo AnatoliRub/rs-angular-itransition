@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { RouterModule } from '@angular/router';
 import { SearchResultPageComponent } from './pages/search-result-page/search-result-page.component';
 import { CommentComponent } from '../components/svgs/comment/comment.component';
 import { DislikeComponent } from '../components/svgs/dislike/dislike.component';
@@ -13,6 +14,8 @@ import { SearchByWordPipe } from './pipes/search-by-word.pipe';
 import { DetailedPageComponent } from './pages/detailed-page/detailed-page.component';
 import { InfoItemComponent } from './components/info-item/info-item.component';
 import { InfoComponent } from './components/info/info.component';
+import { RoutesPath } from '../routes';
+import { AuthGuard } from '../auth/guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,14 @@ import { InfoComponent } from './components/info/info.component';
     InfoComponent,
   ],
   exports: [SearchResultPageComponent, DetailedPageComponent],
-  imports: [CommonModule, MaterialModule, FontAwesomeModule],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    FontAwesomeModule,
+    RouterModule.forChild([
+      { path: RoutesPath.Main, component: SearchResultPageComponent, canActivate: [AuthGuard] },
+      { path: RoutesPath.Detail, component: DetailedPageComponent, canActivate: [AuthGuard] },
+    ]),
+  ],
 })
 export class YoutubeModule {}
