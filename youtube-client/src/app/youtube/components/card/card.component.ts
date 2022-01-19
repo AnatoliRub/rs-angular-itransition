@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { RoutesPath } from 'src/app/routes';
 import { Post } from 'src/types/youtube-data';
 
 @Component({
@@ -14,7 +15,7 @@ export class CardComponent {
   constructor(private router: Router) {}
 
   goToPage() {
-    this.router.navigate(['/detail', this.post?.id]);
+    this.router.navigate([RoutesPath.Youtube, RoutesPath.DetailPart, this.post?.id]);
   }
 
   setCardBorderColor() {

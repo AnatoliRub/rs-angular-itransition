@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { SearchServiceService } from 'src/app/core/services/search-service.service';
+import { RoutesPath } from 'src/app/routes';
 
 @Component({
   selector: 'app-search',
@@ -13,7 +14,7 @@ export class SearchComponent {
   constructor(private searchService: SearchServiceService, private router: Router) {}
 
   displayResults() {
-    this.router.navigate(['/']);
+    this.router.navigate([RoutesPath.Youtube, RoutesPath.Main]);
     this.searchService.setSearchWord(this.searchString);
   }
 }

@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginPageComponent } from './auth/pages/login-page/login-page.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import { DetailedPageComponent } from './youtube/pages/detailed-page/detailed-page.component';
-import { SearchResultPageComponent } from './youtube/pages/search-result-page/search-result-page.component';
+import { RoutesPath } from './routes';
 
 const routes: Routes = [
-  { path: '', component: SearchResultPageComponent },
-  { path: 'login', component: LoginPageComponent },
-  { path: 'detail/:id', component: DetailedPageComponent },
-  { path: 'error', component: ErrorPageComponent },
-  { path: '**', redirectTo: '/error' },
+  {
+    path: RoutesPath.Youtube,
+    loadChildren: () => import('./youtube/youtube.module').then((m) => m.YoutubeModule),
+  },
+  {
+    path: RoutesPath.Auth,
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
+  { path: RoutesPath.Error, component: ErrorPageComponent },
+  { path: RoutesPath.Redirect, redirectTo: RoutesPath.Error },
 ];
 
 @NgModule({
