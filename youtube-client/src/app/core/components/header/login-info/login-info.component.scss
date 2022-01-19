@@ -1,25 +1,31 @@
 @import 'src/styles.scss';
 
-.login__account {
-  &-title {
-    @include text;
-    color: var(--black);
-    margin-right: rem(8);
-    margin-bottom: rem(0);
-  }
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  &-image-container {
-    @include base-button-behavior;
-    display: flex;
-    padding: rem(2.4);
-    align-items: center;
-    border-radius: rem(4);
-    background-color: var(--blue);
-    transition: 1s;
+  &__account {
+    &-title {
+      @include text;
+      color: var(--black);
+      margin-right: rem(8);
+      margin-bottom: rem(0);
+    }
 
-    .fa-user-circle {
-      color: var(--white);
-      font-size: rem(18);
+    &-image-container {
+      @include base-button-behavior;
+      display: flex;
+      padding: rem(2.4);
+      align-items: center;
+      border-radius: rem(4);
+      background-color: var(--blue);
+      transition: 1s;
+
+      .fa-user-circle {
+        color: var(--white);
+        font-size: rem(18);
+      }
     }
   }
 }
