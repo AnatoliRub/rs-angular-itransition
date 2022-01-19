@@ -1,45 +1,48 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { RoutesPath } from 'src/app/routes';
+import { AuthService } from '../../services/auth.service';
+
+enum Controls {
+  Login = 'login',
+  Password = 'password',
+}
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
 })
-export class LoginPageComponent implements OnInit {
-  form: FormGroup | null = null;
+export class LoginPageComponent {
+  getLoginController = () => new FormControl('', [Validators.email, Validators.required]);
 
-  ngOnInit(): void {
-    this.form = new FormGroup({
-      firstName: new FormControl('', [
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(20),
-        Validators.pattern('[a-zA-Zа-яёА-ЯЁ]*'),
-      ]),
-      lastName: new FormControl('', [
-        Validators.minLength(2),
-        Validators.maxLength(20),
-        Validators.pattern('[a-zA-Zа-яёА-ЯЁ]*'),
-      ]),
-      email: new FormControl('', [Validators.email, Validators.required]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    });
-  }
+  getPasswordController = () => new FormControl('', [Validators.required, Validators.minLength(6)]);
 
-  get firstName() {
-    return this.form?.get('firstName');
-  }
+  form: FormGroup = new FormGroup({
+    login: this.getLoginController(),
+    password: this.getPasswordController(),
+  });
 
-  get lastName() {
-    return this.form?.get('lastName');
-  }
+  constructor(private router: Router, private authService: AuthService) {}
 
-  get email() {
-    return this.form?.get('email');
+  get login() {
+    return this.form.get(Controls.Login);
   }
 
   get password() {
-    return this.form?.get('password');
+    return this.form.get(Controls.Password);
+  }
+
+  goToRegistration() {
+    this.router.navigate([RoutesPath.Auth, RoutesPath.Registration]);
+  }
+
+  logout() {
+    this.authService.logout();
+  }
+
+  submit() {
+    this.authService.login({ loginData: this.login?.value, passwordData: this.password?.value });
   }
 }
