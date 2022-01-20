@@ -7,5 +7,5 @@ import { Statistic } from 'src/types/youtube-data';
   styleUrls: ['./info.component.scss'],
 })
 export class InfoComponent {
-  @Input() statistics: Statistic | undefined = undefined;
+  @Input() statistics?: Statistic;
 }

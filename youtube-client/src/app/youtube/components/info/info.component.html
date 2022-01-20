@@ -1,14 +1,14 @@
-<div class="card__info">
-  <app-info-item [count]="statistics!.viewCount">
+<div class="card__info" *ngIf="statistics">
+  <app-info-item [count]="statistics.viewCount">
     <app-view></app-view>
   </app-info-item>
-  <app-info-item [count]="statistics!.likeCount">
+  <app-info-item [count]="statistics.likeCount">
     <app-like></app-like>
   </app-info-item>
-  <app-info-item [count]="statistics!.dislikeCount">
+  <app-info-item [count]="statistics.dislikeCount">
     <app-dislike></app-dislike>
   </app-info-item>
-  <app-info-item [count]="statistics!.commentCount">
+  <app-info-item [count]="statistics.commentCount">
     <app-comment></app-comment>
   </app-info-item>
 </div>
