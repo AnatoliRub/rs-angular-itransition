@@ -5,10 +5,10 @@ import * as Data from './data.json';
 
 @Component({
   selector: 'app-search-result',
-  templateUrl: './search-result.component.html',
-  styleUrls: ['./search-result.component.scss'],
+  templateUrl: './search-result-page.component.html',
+  styleUrls: ['./search-result-page.component.scss'],
 })
-export class SearchResultComponent {
+export class SearchResultPageComponent {
   @Input() searchString = '';
 
   @Input() filterData: IFilterData = { order: Order.Desc, filterType: Filter.Default };

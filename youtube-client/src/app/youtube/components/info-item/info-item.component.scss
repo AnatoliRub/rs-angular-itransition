@@ -1,0 +1,12 @@
+@import 'src/styles.scss';
+
+.card__info-item {
+  display: flex;
+  align-items: center;
+  gap: rem(3);
+}
+
+.info-text {
+  @include small-text;
+  margin-bottom: rem(0);
+}
