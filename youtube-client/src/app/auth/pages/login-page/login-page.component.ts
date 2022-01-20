@@ -15,9 +15,13 @@ enum Controls {
   styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent {
-  getLoginController = () => new FormControl('', [Validators.email, Validators.required]);
+  getLoginController() {
+    return new FormControl('', [Validators.email, Validators.required]);
+  }
 
-  getPasswordController = () => new FormControl('', [Validators.required, Validators.minLength(6)]);
+  getPasswordController() {
+    return new FormControl('', [Validators.required, Validators.minLength(6)]);
+  }
 
   form: FormGroup = new FormGroup({
     login: this.getLoginController(),
@@ -44,6 +48,6 @@ export class LoginPageComponent {
 
   submit() {
     this.authService.login({ loginData: this.login?.value, passwordData: this.password?.value });
-    this.router.navigate([RoutesPath.Youtube]);
+    this.router.navigate([RoutesPath.Main]);
   }
 }

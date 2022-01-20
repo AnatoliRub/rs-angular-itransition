@@ -16,24 +16,30 @@ enum Control {
   styleUrls: ['./registration-page.component.scss'],
 })
 export class RegistrationPageComponent {
-  getFirstNameController = () =>
-    new FormControl('', [
+  getFirstNameController() {
+    return new FormControl('', [
       Validators.required,
       Validators.minLength(2),
       Validators.maxLength(20),
       Validators.pattern('[a-zA-Zа-яёА-ЯЁ]*'),
     ]);
+  }
 
-  getLastNameController = () =>
-    new FormControl('', [
+  getLastNameController() {
+    return new FormControl('', [
       Validators.minLength(2),
       Validators.maxLength(20),
       Validators.pattern('[a-zA-Zа-яёА-ЯЁ]*'),
     ]);
+  }
 
-  getEmailController = () => new FormControl('', [Validators.email, Validators.required]);
+  getEmailController() {
+    return new FormControl('', [Validators.email, Validators.required]);
+  }
 
-  getPasswordController = () => new FormControl('', [Validators.required, Validators.minLength(6)]);
+  getPasswordController() {
+    return new FormControl('', [Validators.required, Validators.minLength(6)]);
+  }
 
   form: FormGroup = new FormGroup({
     firstName: this.getFirstNameController(),
