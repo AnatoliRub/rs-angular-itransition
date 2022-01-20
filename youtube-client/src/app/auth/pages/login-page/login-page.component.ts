@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RoutesPath } from 'src/app/routes';
+import { RoutesPath } from 'src/app/routes.enum';
 import { AuthService } from '../../services/auth.service';
 
 enum Controls {
@@ -44,5 +44,6 @@ export class LoginPageComponent {
 
   submit() {
     this.authService.login({ loginData: this.login?.value, passwordData: this.password?.value });
+    this.router.navigate([RoutesPath.Youtube]);
   }
 }

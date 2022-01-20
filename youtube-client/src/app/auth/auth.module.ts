@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
-import { RoutesPath } from '../routes';
+import { RoutesPath } from '../routes.enum';
 
 @NgModule({
   declarations: [LoginPageComponent, RegistrationPageComponent],

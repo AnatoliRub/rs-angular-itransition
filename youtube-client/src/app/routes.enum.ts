@@ -1,7 +1,7 @@
 export enum RoutesPath {
   Auth = 'auth',
   Youtube = 'youtube',
-  Main = 'main',
+  Main = '',
   Login = 'login',
   Registration = 'registration',
   Detail = 'detail/:id',

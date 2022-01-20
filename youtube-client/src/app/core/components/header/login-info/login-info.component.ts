@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
-import { RoutesPath } from 'src/app/routes';
+import { RoutesPath } from 'src/app/routes.enum';
 
 @Component({
   selector: 'app-login',

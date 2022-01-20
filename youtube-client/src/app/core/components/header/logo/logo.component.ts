@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RoutesPath } from 'src/app/routes';
+import { RoutesPath } from 'src/app/routes.enum';
 
 @Component({
   selector: 'app-logo',
@@ -7,5 +7,5 @@ import { RoutesPath } from 'src/app/routes';
   styleUrls: ['./logo.component.scss'],
 })
 export class LogoComponent {
-  pathToMainPage: RoutesPath[] = [RoutesPath.Youtube, RoutesPath.Main];
+  pathToMainPage: RoutesPath[] = [RoutesPath.Youtube];
 }

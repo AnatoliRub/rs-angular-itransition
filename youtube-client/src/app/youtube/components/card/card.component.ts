@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { RoutesPath } from 'src/app/routes';
+import { RoutesPath } from 'src/app/routes.enum';
 import { Post } from 'src/types/youtube-data';
 
 @Component({
