@@ -10,15 +10,15 @@ export class SearchServiceService {
 
   #isShowSettings = new BehaviorSubject(this.#toggleSearchSettings);
 
-  public isShowSettings = this.#isShowSettings.asObservable();
+  isShowSettings = this.#isShowSettings.asObservable();
 
   #searchWord = new BehaviorSubject('');
 
-  public searchWord = this.#searchWord.asObservable();
+  searchWord = this.#searchWord.asObservable();
 
   #filter = new BehaviorSubject<IFilterData>({ filterType: Filter.Default });
 
-  public filter = this.#filter.asObservable();
+  filter = this.#filter.asObservable();
 
   setFilter(value: IFilterData) {
     this.#filter.next(value);
