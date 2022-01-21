@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { SearchServiceService } from 'src/app/core/services/search-service.service';
 
 @Component({
   selector: 'app-search-settings',
@@ -6,9 +7,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./search-settings.component.scss'],
 })
 export class SearchSettingsComponent {
-  @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
+  constructor(private searchService: SearchServiceService) {}
 
   toggleSettings() {
-    this.toggle.emit();
+    this.searchService.toggleSettings();
   }
 }

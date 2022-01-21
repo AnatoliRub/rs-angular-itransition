@@ -1,4 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { SearchServiceService } from 'src/app/core/services/search-service.service';
+import { RoutesPath } from 'src/app/routes.enum';
 
 @Component({
   selector: 'app-search',
@@ -8,9 +11,10 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class SearchComponent {
   searchString: string = '';
 
-  @Output() showResults = new EventEmitter<string>();
+  constructor(private searchService: SearchServiceService, private router: Router) {}
 
   displayResults() {
-    this.showResults.emit(this.searchString);
+    this.router.navigate([RoutesPath.Youtube]);
+    this.searchService.setSearchWord(this.searchString);
   }
 }

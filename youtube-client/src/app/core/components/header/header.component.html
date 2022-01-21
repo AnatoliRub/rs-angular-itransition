@@ -1,6 +1,7 @@
 <div class="header">
   <app-logo class="logo"></app-logo>
-  <app-search class="search" (showResults)="displaySearchingResult($event)"></app-search>
-  <app-search-settings class="search-settings" (toggle)="showSettings()"></app-search-settings>
+  <app-search class="search"></app-search>
+  <app-search-settings class="search-settings"></app-search-settings>
   <app-login class="login__account"></app-login>
 </div>
+<app-filtering-criteria *ngIf="isVisible$ | async"></app-filtering-criteria>
