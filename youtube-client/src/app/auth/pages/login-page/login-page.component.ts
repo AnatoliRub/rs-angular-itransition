@@ -15,14 +15,6 @@ enum Controls {
   styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent {
-  getLoginController() {
-    return new FormControl('', [Validators.email, Validators.required]);
-  }
-
-  getPasswordController() {
-    return new FormControl('', [Validators.required, Validators.minLength(6)]);
-  }
-
   form: FormGroup = new FormGroup({
     login: this.getLoginController(),
     password: this.getPasswordController(),
@@ -30,12 +22,12 @@ export class LoginPageComponent {
 
   constructor(private router: Router, private authService: AuthService) {}
 
-  get login() {
-    return this.form.get(Controls.Login);
+  getLoginController() {
+    return new FormControl('', [Validators.email, Validators.required]);
   }
 
-  get password() {
-    return this.form.get(Controls.Password);
+  getPasswordController() {
+    return new FormControl('', [Validators.required, Validators.minLength(6)]);
   }
 
   goToRegistration() {
@@ -49,5 +41,13 @@ export class LoginPageComponent {
   submit() {
     this.authService.login({ loginData: this.login?.value, passwordData: this.password?.value });
     this.router.navigate([RoutesPath.Main]);
+  }
+
+  get login() {
+    return this.form.get(Controls.Login);
+  }
+
+  get password() {
+    return this.form.get(Controls.Password);
   }
 }
