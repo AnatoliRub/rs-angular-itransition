@@ -1,67 +1,37 @@
 <div class="form-wrapper">
-  <form class="form" [formGroup]="form!">
+  <form class="form" [formGroup]="form">
     <h2 class="form__title">Registration</h2>
 
     <div class="form__item">
       <label class="form__item-label" for="firstName">First name:</label>
       <input class="form__item-input" type="text" id="firstName" formControlName="firstName" />
-      <div class="validation" *ngIf="firstName?.invalid && firstName?.touched">
-        <small class="validation__item" *ngIf="firstName?.errors?.['required']"
-          >This field is required.</small
-        >
-        <small class="validation__item" *ngIf="firstName?.errors?.['minlength']"
-          >The name should contain more than 2 characters.</small
-        >
-        <small class="validation__item" *ngIf="firstName?.errors?.['maxlength']"
-          >The name should contain less than 20 characters.</small
-        >
-        <small class="validation__item" *ngIf="firstName?.errors?.['pattern']"
-          >This field should contain only letters.</small
-        >
-      </div>
+      <ng-container *ngIf="firstName && firstName?.errors">
+        <app-error [control]="firstName"></app-error>
+      </ng-container>
     </div>
 
     <div class="form__item">
       <label class="form__item-label" for="lastName">Last name:</label>
       <input class="form__item-input" type="text" id="lastName" formControlName="lastName" />
-      <div class="validation" *ngIf="lastName?.invalid && lastName?.touched">
-        <small class="validation__item" *ngIf="lastName?.errors?.['minlength']"
-          >The name should contain more than 2 characters.</small
-        >
-        <small class="validation__item" *ngIf="lastName?.errors?.['maxlength']"
-          >The name should contain less than 20 characters.</small
-        >
-        <small class="validation__item" *ngIf="lastName?.errors?.['pattern']"
-          >This field should contain only letters.</small
-        >
-      </div>
+      <ng-container *ngIf="lastName && lastName?.errors">
+        <app-error [control]="lastName"></app-error>
+      </ng-container>
     </div>
 
     <div class="form__item">
       <label class="form__item-label" for="email">mail:</label>
       <input class="form__item-input" type="email" id="email" formControlName="email" />
-      <div class="validation" *ngIf="email?.invalid && email?.touched">
-        <small class="validation__item" *ngIf="email?.errors?.['required']"
-          >This field is required.</small
-        >
-        <small class="validation__item" *ngIf="email?.errors?.['email']"
-          >Enter correct address of email.</small
-        >
-      </div>
+      <ng-container *ngIf="lastName && lastName?.errors">
+        <app-error [control]="lastName"></app-error>
+      </ng-container>
     </div>
 
     <div class="form__item">
       <label class="form__item-label" for="password">password:</label>
       <input class="form__item-input" type="password" id="password" formControlName="password" />
-      <div class="validation" *ngIf="password?.invalid && password?.touched">
-        <small class="validation__item" *ngIf="password?.errors?.['required']"
-          >This field is required.</small
-        >
-        <small class="validation__item" *ngIf="password?.errors?.['minlength']"
-          >The password shouldn't be less than
-          {{ password?.errors?.['minlength']?.['requiredLength'] }} characters.</small
-        >
-      </div>
+      <ng-container *ngIf="lastName && lastName?.errors">
+        <app-error [control]="lastName"></app-error>
+      </ng-container>
     </div>
 
     <div class="form__controls">

@@ -3,11 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RoutesPath } from 'src/app/routes.enum';
 import { AuthService } from '../../services/auth.service';
-
-enum Controls {
-  Login = 'login',
-  Password = 'password',
-}
+import { Control } from '../../types/control.type';
 
 @Component({
   selector: 'app-login-page',
@@ -44,10 +40,10 @@ export class LoginPageComponent {
   }
 
   get login() {
-    return this.form.get(Controls.Login);
+    return this.form.get(Control.Login);
   }
 
   get password() {
-    return this.form.get(Controls.Password);
+    return this.form.get(Control.Password);
   }
 }

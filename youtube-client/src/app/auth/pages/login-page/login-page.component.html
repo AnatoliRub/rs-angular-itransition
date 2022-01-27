@@ -5,40 +5,35 @@
     <div class="form__item">
       <label class="form__item-label" for="login">login:</label>
       <input class="form__item-input" type="email" id="login" formControlName="login" />
-      <ng-container *ngIf="login">
-        <div class="validation" *ngIf="login.invalid && login.touched">
-          <small class="validation__item" *ngIf="login.errors?.['required']"
-            >This field is required.</small
-          >
-          <small class="validation__item" *ngIf="login?.errors?.['email']"
-            >Enter correct address of email.</small
-          >
-        </div>
+      <ng-container *ngIf="login && login?.errors">
+        <app-error [control]="login"></app-error>
       </ng-container>
     </div>
 
     <div class="form__item">
       <label class="form__item-label" for="password">password:</label>
       <input class="form__item-input" type="password" id="password" formControlName="password" />
-      <div class="validation" *ngIf="password?.invalid && password?.touched">
-        <small class="validation__item" *ngIf="password?.errors?.['required']"
-          >This field is required.</small
-        >
-        <small class="validation__item" *ngIf="password?.errors?.['minlength']"
-          >The password shouldn't be less than
-          {{ password?.errors?.['minlength']?.['requiredLength'] }} characters.</small
-        >
-      </div>
+      <ng-container *ngIf="password && password?.errors">
+        <app-error [control]="password"></app-error>
+      </ng-container>
     </div>
 
     <div class="form__controls">
-      <button type="button" class="form__registration-button button" (click)="logout()">
+      <button
+        type="button"
+        class="form__registration-button button"
+        (click)="logout()"
+      >
         Logout
       </button>
       <button type="button" class="form__login-button button" (click)="goToRegistration()">
         Registration
       </button>
-      <button type="submit" class="form__registration-button button" [disabled]="form!.invalid">
+      <button
+        type="submit"
+        class="form__registration-button button"
+        [disabled]="form.invalid"
+      >
         Login
       </button>
     </div>
