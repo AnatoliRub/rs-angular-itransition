@@ -5,9 +5,10 @@ import { RouterModule } from '@angular/router';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
 import { RoutesPath } from '../routes.enum';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
-  declarations: [LoginPageComponent, RegistrationPageComponent],
+  declarations: [LoginPageComponent, RegistrationPageComponent, ErrorComponent],
   exports: [LoginPageComponent],
   imports: [
     CommonModule,

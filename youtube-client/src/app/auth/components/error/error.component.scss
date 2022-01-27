@@ -1,0 +1,8 @@
+.validation {
+  padding-left: rem(6);
+
+  &__item {
+    color: var(--red);
+    margin-right: rem(3);
+  }
+}
