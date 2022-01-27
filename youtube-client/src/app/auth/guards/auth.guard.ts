@@ -9,13 +9,12 @@ import { AuthService } from '../services/auth.service';
 export class AuthGuard implements CanActivate {
   constructor(private readonly authService: AuthService, private readonly router: Router) {}
 
-  canActivate(): Promise<boolean> {
-    return this.authService.isAuthenticated().then((isAuth) => {
+  async canActivate(): Promise<boolean> {
+    const isAuth = await this.authService.isAuthenticated();
       if (isAuth) {
         return true;
       }
       this.router.navigate([RoutesPath.Auth, RoutesPath.Login], { queryParams: { auth: false } });
       return false;
-    });
   }
 }
