@@ -10,6 +10,12 @@
   line-height: rem(14);
 }
 
+@mixin middle-label {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+}
+
 @mixin big-label {
   font-weight: bold;
   font-size: rem(24);

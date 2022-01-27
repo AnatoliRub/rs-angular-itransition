@@ -1,0 +1,97 @@
+@import 'src/styles.scss';
+
+:host {
+  display: flex;
+  padding-top: rem(44);
+  align-items: center;
+  justify-content: center;
+}
+
+.detail {
+  display: flex;
+  position: relative;
+
+  &__image-container {
+    height: rem(460);
+    width: rem(730);
+  }
+
+  &__image {
+    height: 100%;
+    width: 100%;
+    filter: drop-shadow(rem(5) rem(10) rem(20) rgba(51, 51, 51, 0.25));
+    border-radius: rem(0) rem(0) rem(0) rem(5);
+  }
+
+  &__information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--main-background);
+    padding: rem(35) rem(35) rem(0) rem(35);
+    box-shadow: rem(5) rem(10) rem(20) rgba(51, 51, 51, 0.25);
+    border-radius: rem(0) rem(5) rem(5) rem(0);
+    border-bottom: rem(5) solid var(--blue);
+  }
+
+  &__information-title {
+    display: flex;
+    justify-content: space-between;
+    align-self: normal;
+    margin-bottom: rem(60);
+  }
+
+  &__title {
+    @include big-label;
+    max-width: rem(220);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__date {
+    @include small-text;
+    color: var(--gray-darky);
+    align-self: flex-end;
+  }
+
+  &__description {
+    width: rem(365);
+
+    &-title {
+      @include text;
+      margin-bottom: rem(4);
+    }
+
+    &-text {
+      @include text;
+      color: var(--gray-darky);
+      padding-bottom: rem(0);
+      margin-bottom: rem(0);
+      height: rem(240);
+      overflow: scroll;
+      &::-webkit-scrollbar {
+        width: 0;
+      }
+    }
+  }
+
+  &__back-button {
+    @include base-button-behavior;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: rem(32);
+    width: rem(32);
+    top: 0;
+    left: rem(-32);
+    background-color: var(--blue);
+    border-radius: rem(5) rem(0) rem(0) rem(5);
+
+    & > .fa-chevron-left {
+      font-size: rem(20);
+      color: var(--white);
+    }
+  }
+}
