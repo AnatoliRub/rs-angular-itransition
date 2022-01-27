@@ -26,11 +26,13 @@ export class ErrorComponent {
     }
 
     if (minLengthError) {
-      return `The password shouldn't be less than ${minLengthError?.requiredLength} characters. Actual length is ${minLengthError?.actualLength}.`;
+      return `The password shouldn't be less than ${minLengthError?.requiredLength} characters.
+      Actual length is ${minLengthError?.actualLength}.`;
     }
 
     if (maxLengthError) {
-      return `The name should contain less than ${maxLengthError?.requiredLength} characters. Actual length is ${maxLengthError?.actualLength}.`;
+      return `The name should contain less than ${maxLengthError?.requiredLength} characters.
+      Actual length is ${maxLengthError?.actualLength}.`;
     }
 
     if (onlyLetters) {
