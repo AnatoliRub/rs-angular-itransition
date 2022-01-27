@@ -12,7 +12,7 @@ import { Post } from 'src/types/youtube-data';
 export class CardComponent {
   @Input() post?: Post;
 
-  constructor(private router: Router) {}
+  constructor(private readonly router: Router) {}
 
   goToPage() {
     this.router.navigate([RoutesPath.Youtube, RoutesPath.DetailPart, this.post?.id]);

@@ -10,5 +10,5 @@ import { SearchServiceService } from '../../services/search-service.service';
 export class HeaderComponent {
   public isVisible$: Observable<boolean> = this.searchService.isShowSettings;
 
-  constructor(private searchService: SearchServiceService) {}
+  constructor(private readonly searchService: SearchServiceService) {}
 }

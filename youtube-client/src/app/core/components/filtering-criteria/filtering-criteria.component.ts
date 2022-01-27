@@ -21,7 +21,7 @@ export class FilteringCriteriaComponent implements OnDestroy {
 
   @Input() filterWord = '';
 
-  constructor(private searchService: SearchServiceService) {}
+  constructor(private readonly searchService: SearchServiceService) {}
 
   toggleOrder() {
     if (this.previousFilterState === this.currentFilterState) {

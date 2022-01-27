@@ -23,7 +23,7 @@ export class RegistrationPageComponent {
     password: this.getPasswordController(),
   });
 
-  constructor(private router: Router) {}
+  constructor(private readonly router: Router) {}
 
   getFirstNameController() {
     return new FormControl('', [

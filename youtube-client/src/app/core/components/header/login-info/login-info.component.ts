@@ -11,7 +11,7 @@ import { RoutesPath } from 'src/app/routes.enum';
 export class LoginInfoComponent {
   faUserCircle = faUserCircle;
 
-  constructor(private router: Router) {}
+  constructor(private readonly router: Router) {}
 
   goToLogin() {
     this.router.navigate([RoutesPath.Auth, RoutesPath.Login]);

@@ -7,7 +7,7 @@ import { SearchServiceService } from 'src/app/core/services/search-service.servi
   styleUrls: ['./search-settings.component.scss'],
 })
 export class SearchSettingsComponent {
-  constructor(private searchService: SearchServiceService) {}
+  constructor(private readonly searchService: SearchServiceService) {}
 
   toggleSettings() {
     this.searchService.toggleSettings();

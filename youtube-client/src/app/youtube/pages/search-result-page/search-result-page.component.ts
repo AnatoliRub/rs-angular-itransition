@@ -17,5 +17,8 @@ export class SearchResultPageComponent {
 
   filter$: Observable<IFilterData> = this.searchService.filter;
 
-  constructor(private searchService: SearchServiceService, private cardServise: CardService) {}
+  constructor(
+    private readonly searchService: SearchServiceService,
+    private readonly cardServise: CardService,
+  ) {}
 }

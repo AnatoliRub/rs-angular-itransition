@@ -20,7 +20,7 @@ export class LoginPageComponent {
     password: this.getPasswordController(),
   });
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private readonly router: Router, private readonly authService: AuthService) {}
 
   getLoginController() {
     return new FormControl('', [Validators.email, Validators.required]);

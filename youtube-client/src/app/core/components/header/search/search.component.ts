@@ -11,7 +11,7 @@ import { RoutesPath } from 'src/app/routes.enum';
 export class SearchComponent {
   searchString: string = '';
 
-  constructor(private searchService: SearchServiceService, private router: Router) {}
+  constructor(private readonly searchService: SearchServiceService, private readonly router: Router) {}
 
   displayResults() {
     this.router.navigate([RoutesPath.Youtube]);

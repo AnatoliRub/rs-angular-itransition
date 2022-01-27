@@ -16,9 +16,9 @@ export class DetailedPageComponent implements OnInit {
   post?: Post;
 
   constructor(
-    private route: ActivatedRoute,
-    private cardService: CardService,
-    private router: Router,
+    private readonly route: ActivatedRoute,
+    private readonly cardService: CardService,
+    private readonly router: Router,
   ) {}
 
   goBack() {

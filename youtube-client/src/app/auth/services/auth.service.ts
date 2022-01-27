@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { ILoginData } from '../models/login-data.model';
 
 @Injectable({
@@ -7,8 +6,6 @@ import { ILoginData } from '../models/login-data.model';
 })
 export class AuthService {
   #isAuth = !!localStorage.getItem('user');
-
-  constructor(private router: Router) {}
 
   login(data: ILoginData) {
     this.#isAuth = true;
