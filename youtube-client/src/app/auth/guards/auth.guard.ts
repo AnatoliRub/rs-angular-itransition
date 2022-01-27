@@ -11,10 +11,10 @@ export class AuthGuard implements CanActivate {
 
   async canActivate(): Promise<boolean> {
     const isAuth = await this.authService.isAuthenticated();
-      if (isAuth) {
-        return true;
-      }
-      this.router.navigate([RoutesPath.Auth, RoutesPath.Login], { queryParams: { auth: false } });
-      return false;
+    if (isAuth) {
+      return true;
+    }
+    this.router.navigate([RoutesPath.Auth, RoutesPath.Login], { queryParams: { auth: false } });
+    return false;
   }
 }
