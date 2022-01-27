@@ -12,7 +12,7 @@ export class ErrorComponent {
 
   @Input() showError?: boolean;
 
-  chooseMessage() {
+  get message(): string {
     const requiredError = this.control?.errors?.[TypeError.Required];
     const emailError = this.control?.errors?.[TypeError.Email];
     const minLengthError = this.control?.errors?.[TypeError.Minlength];

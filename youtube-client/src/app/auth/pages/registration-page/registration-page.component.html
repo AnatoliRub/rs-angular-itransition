@@ -21,16 +21,16 @@
     <div class="form__item">
       <label class="form__item-label" for="email">mail:</label>
       <input class="form__item-input" type="email" id="email" formControlName="email" />
-      <ng-container *ngIf="lastName && lastName?.errors">
-        <app-error [control]="lastName"></app-error>
+      <ng-container *ngIf="email && email?.errors">
+        <app-error [control]="email"></app-error>
       </ng-container>
     </div>
 
     <div class="form__item">
       <label class="form__item-label" for="password">password:</label>
       <input class="form__item-input" type="password" id="password" formControlName="password" />
-      <ng-container *ngIf="lastName && lastName?.errors">
-        <app-error [control]="lastName"></app-error>
+      <ng-container *ngIf="password && password?.errors">
+        <app-error [control]="password"></app-error>
       </ng-container>
     </div>
 
