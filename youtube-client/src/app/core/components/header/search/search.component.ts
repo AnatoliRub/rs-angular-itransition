@@ -1,43 +1,39 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { debounceTime, filter, fromEvent, Subscription, tap } from 'rxjs';
-import { SearchServiceService } from 'src/app/core/services/search-service.service';
+import { BehaviorSubject, debounceTime, filter, Subscription } from 'rxjs';
 import { RoutesPath } from 'src/app/routes.enum';
+import { CardService } from 'src/app/youtube/services/card.service';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('search')
-  search?: ElementRef;
+export class SearchComponent implements OnInit, OnDestroy {
+  #search$ = new BehaviorSubject('');
 
   subscription$?: Subscription;
 
-  searchString: string = '';
+  constructor(private readonly cardService: CardService, private readonly router: Router) {}
 
-  constructor(
-    private readonly searchService: SearchServiceService,
-    private readonly router: Router,
-  ) {}
-
-  ngAfterViewInit(): void {
-    if (this.search) {
-      this.subscription$ = fromEvent<Event>(this.search.nativeElement, 'change')
-        .pipe(
-          filter((val) => (val?.target as HTMLInputElement).value.length > 3),
-          debounceTime(400),
-          tap((val) => {
-            this.router.navigate([RoutesPath.Youtube]);
-            this.searchService.setSearchWord((val?.target as HTMLInputElement).value);
-          }),
-        )
-        .subscribe();
-    }
+  ngOnInit(): void {
+    this.subscription$ = this.#search$
+      .pipe(
+        debounceTime(400),
+        filter((val) => val.length > 3),
+      )
+      .subscribe((val) => {
+        this.cardService.getPosts(val);
+        this.router.navigate([RoutesPath.Youtube]);
+      });
   }
 
   ngOnDestroy(): void {
     this.subscription$?.unsubscribe();
+  }
+
+  onInput(event: Event) {
+    const val = (event.target as HTMLInputElement).value;
+    this.#search$.next(val);
   }
 }

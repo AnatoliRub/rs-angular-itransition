@@ -10,7 +10,6 @@ import { ViewComponent } from '../components/svgs/view/view.component';
 import { CardComponent } from './components/card/card.component';
 import { MaterialModule } from '../material/material.module';
 import { FilterDataByCriteriaPipe } from './pipes/filter-data-by-criteria.pipe';
-import { SearchByWordPipe } from './pipes/search-by-word.pipe';
 import { DetailedPageComponent } from './pages/detailed-page/detailed-page.component';
 import { InfoItemComponent } from './components/info-item/info-item.component';
 import { InfoComponent } from './components/info/info.component';
@@ -25,7 +24,6 @@ import { AuthGuard } from '../auth/guards/auth.guard';
     LikeComponent,
     DislikeComponent,
     CommentComponent,
-    SearchByWordPipe,
     FilterDataByCriteriaPipe,
     DetailedPageComponent,
     InfoItemComponent,
