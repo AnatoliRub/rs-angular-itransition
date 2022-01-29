@@ -1,21 +1,57 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Post, YoutubeData } from 'src/types/youtube-data';
-import * as Data from '../pages/search-result-page/data.json';
+import { BehaviorSubject, concatMap, map, Observable, take } from 'rxjs';
+import { Id, Post, YoutubeData } from 'src/types/youtube-data';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CardService {
-  #json: YoutubeData = Data;
+  #posts = new BehaviorSubject<Post<string>[]>([]);
 
-  #posts: Post[] = this.#json.items;
+  posts = this.#posts.asObservable();
 
-  #cardsInfo = new BehaviorSubject(this.#json.items);
+  #detailPost = new BehaviorSubject<Post<string> | null>(null);
 
-  public cardsInfo = this.#cardsInfo.asObservable();
+  detailPost = this.#detailPost.asObservable();
 
-  getById(id: string) {
-    return this.#posts.find((post) => post.id === id);
+  mainRequestPart = 'https://youtube.googleapis.com/youtube/v3/';
+
+  postsList$?: Observable<Post<string>[]>;
+
+  constructor(private http: HttpClient) {}
+
+  getPosts(searchPhrase: string) {
+    this.getPostsData(searchPhrase)
+      .pipe(
+        map((res) =>
+          Object.values(res.items)
+            .map((el) => el.id.videoId)
+            .join(','),
+        ),
+        concatMap((res) => this.getPostsDataWithStatistic(res)),
+        take(1),
+      )
+      .subscribe((posts) => {
+        this.#posts.next(posts);
+      });
+  }
+
+  getPostsData(searchPhrase: string) {
+    let params = new HttpParams();
+    params = params.append('part', 'snippet');
+    params = params.append('type', 'video');
+    params = params.append('q', searchPhrase);
+    params = params.append('maxResults', '10');
+    return this.http.get<YoutubeData<Post<Id>>>(`${this.mainRequestPart}search?`, { params });
+  }
+
+  getPostsDataWithStatistic(ids: string) {
+    let params = new HttpParams();
+    params = params.append('part', 'snippet,statistics');
+    params = params.append('id', ids);
+    return this.http
+      .get<YoutubeData<Post<string>>>(`${this.mainRequestPart}videos?`, { params })
+      .pipe(map((res) => Object.values(res.items)));
   }
 }
