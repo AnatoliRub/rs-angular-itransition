@@ -1,39 +1,49 @@
-export interface YoutubeData {
+export interface YoutubeData<T> {
   etag: string;
-  items: Array<Post>;
+  items: Array<T>;
   kind: string;
   pageInfo: {
     totalResults: number;
     resultsPerPage: number;
   };
+  nextPageToken: string;
+  regionCode: string;
+}
+
+export interface Post<N> {
+  kind: string;
+  etag: string;
+  id: N;
+  snippet: Snippet;
+  statistics: Statistic;
+}
+
+export interface Id {
+  kind: string;
+  videoId: string;
 }
 
 export interface Snippet {
+  channelId: string;
   channelTitle: string;
   description: string;
+  liveBroadcastContent: string;
+  publishTime: string;
   publishedAt: string;
-  title: string;
   thumbnails: {
     default: Thumbnail;
     high: Thumbnail;
-    maxres: Thumbnail;
     medium: Thumbnail;
     standard: Thumbnail;
+    maxres: Thumbnail;
   };
+  title: string;
 }
 
 export interface Thumbnail {
   url: string;
   width: number;
   height: number;
-}
-
-export interface Post {
-  kind: string;
-  etag: string;
-  id: string;
-  snippet: Snippet;
-  statistics: Statistic;
 }
 
 export interface Statistic {

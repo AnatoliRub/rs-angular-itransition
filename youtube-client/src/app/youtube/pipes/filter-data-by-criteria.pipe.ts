@@ -6,7 +6,12 @@ import { Post } from 'src/types/youtube-data';
   name: 'filterDataByCriteria',
 })
 export class FilterDataByCriteriaPipe implements PipeTransform {
-  transform = (posts: Post[], type: Filter, order?: string, word?: string): Post[] => {
+  transform = (
+    posts: Post<string>[],
+    type: Filter,
+    order?: string,
+    word?: string,
+  ): Post<string>[] => {
     if (Filter.Date === type) {
       return posts.sort((a, b) =>
         order === Order.Desc
