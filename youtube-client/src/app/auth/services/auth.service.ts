@@ -1,27 +1,22 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { ILoginData } from '../models/login-data.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  #isAuth = !!localStorage.getItem('user');
+  #isAuth = new BehaviorSubject(!!localStorage.getItem('user'));
+
+  isAuth = this.#isAuth.asObservable();
 
   login(data: ILoginData) {
-    this.#isAuth = true;
+    this.#isAuth.next(true);
     localStorage.setItem('user', JSON.stringify(data));
   }
 
   logout() {
-    this.#isAuth = false;
+    this.#isAuth.next(false);
     localStorage.removeItem('user');
-  }
-
-  isAuthenticated(): Promise<boolean> {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(this.#isAuth);
-      }, 0);
-    });
   }
 }

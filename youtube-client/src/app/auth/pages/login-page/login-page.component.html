@@ -19,15 +19,22 @@
     </div>
 
     <div class="form__controls">
-      <button type="button" class="form__registration-button button" (click)="logout()">
+      <button
+        type="button"
+        class="form__registration-button button"
+        (click)="logout()"
+        [disabled]="(isAuthenticated$ | async) === false"
+      >
         Logout
       </button>
       <button type="button" class="form__login-button button" (click)="goToRegistration()">
         Registration
       </button>
-      <button type="submit" class="form__registration-button button" [disabled]="form.invalid">
-        Login
-      </button>
+      <ng-container *ngIf="(isAuthenticated$ | async) === false as isAuth">
+        <button type="submit" class="form__registration-button button" [disabled]="form.invalid">
+          Login
+        </button>
+      </ng-container>
     </div>
   </form>
 </div>
