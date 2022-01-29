@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-import { Subscription } from 'rxjs';
+import { concatMap, Observable, Subscription } from 'rxjs';
 import { RoutesPath } from 'src/app/routes.enum';
 import { Post } from 'src/types/youtube-data';
 import { CardService } from '../../services/card.service';
@@ -16,7 +16,7 @@ export class DetailedPageComponent implements OnInit, OnDestroy {
 
   subscription?: Subscription;
 
-  post?: Post;
+  post?: Post<string>;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -25,9 +25,16 @@ export class DetailedPageComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.subscription = this.route.params.subscribe((params: Params) => {
-      this.post = this.cardService.getById(params['id']);
-    });
+    this.subscription = this.route.params
+      .pipe(
+        concatMap((val): Observable<Post<string>[]> => {
+          return this.cardService.getPostsDataWithStatistic(val['id']);
+        }),
+      )
+      .subscribe((postList): void => {
+        const [firstPost] = postList;
+        this.post = firstPost;
+      });
   }
 
   ngOnDestroy(): void {
