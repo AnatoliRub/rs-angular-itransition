@@ -2,21 +2,8 @@
   <form class="form" [formGroup]="form" (submit)="submit()">
     <h2 class="form__title">Login</h2>
 
-    <div class="form__item">
-      <label class="form__item-label" for="login">login:</label>
-      <input class="form__item-input" type="email" id="login" formControlName="login" />
-      <ng-container *ngIf="login && login?.errors">
-        <app-error [control]="login"></app-error>
-      </ng-container>
-    </div>
-
-    <div class="form__item">
-      <label class="form__item-label" for="password">password:</label>
-      <input class="form__item-input" type="password" id="password" formControlName="password" />
-      <ng-container *ngIf="password && password?.errors">
-        <app-error [control]="password"></app-error>
-      </ng-container>
-    </div>
+    <app-form-input [control]="login" name="login" caption="login:" [form]="form"></app-form-input>
+    <app-form-input [control]="password" name="password" caption="password" [form]="form"></app-form-input>
 
     <div class="form__controls">
       <button
