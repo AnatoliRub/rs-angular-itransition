@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from '../app-routing.module';
 import { AuthInterceptor } from '../auth/interceptors/auth.interceptor';
-import { YoutubeComponent } from '../components/svgs/youtube/youtube.component';
+import { YoutubeComponent } from './components/svgs/youtube/youtube.component';
 import { FilteringCriteriaComponent } from './components/filtering-criteria/filtering-criteria.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginInfoComponent } from './components/header/login-info/login-info.component';
