@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ErrorPageComponent } from './technical/pages/error-page/error-page.component';
 import { RoutesPath } from './routes.enum';
 
 const routes: Routes = [
@@ -13,7 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   { path: RoutesPath.Main, redirectTo: RoutesPath.Youtube, pathMatch: 'full' },
-  { path: RoutesPath.Error, component: ErrorPageComponent },
+  {
+    path: RoutesPath.Error,
+    loadChildren: () => import('./technical/technical.module').then((m) => m.TechnicalModule),
+  },
   { path: RoutesPath.Redirect, redirectTo: RoutesPath.Error },
 ];
 
