@@ -2,8 +2,20 @@
   <form class="form" [formGroup]="form" (submit)="submit()">
     <h2 class="form__title">Login</h2>
 
-    <app-form-input [control]="login" name="login" caption="login:" [form]="form"></app-form-input>
-    <app-form-input [control]="password" name="password" caption="password" [form]="form"></app-form-input>
+    <app-form-input
+      [control]="login"
+      type="email"
+      name="login"
+      caption="login:"
+      [form]="form"
+    ></app-form-input>
+    <app-form-input
+      [control]="password"
+      type="password"
+      name="password"
+      caption="password:"
+      [form]="form"
+    ></app-form-input>
 
     <div class="form__controls">
       <button
