@@ -11,6 +11,8 @@ import { Control } from '../../types/control.type';
   styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent {
+  isAuthenticated$ = this.authService.isAuth;
+
   form: FormGroup = new FormGroup({
     login: this.getLoginController(),
     password: this.getPasswordController(),

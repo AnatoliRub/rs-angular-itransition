@@ -10,7 +10,7 @@ import { Post } from 'src/types/youtube-data';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
-  @Input() post?: Post;
+  @Input() post?: Post<string>;
 
   constructor(private readonly router: Router) {}
 

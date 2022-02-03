@@ -1,16 +1,12 @@
 <section class="app-search-result__container">
-  <ng-container *ngIf="searchString$ | async as search">
-    <ng-container *ngIf="filter$ | async as filter">
-      <ng-container *ngIf="posts$ | async as posts">
-        <app-card
-          *ngFor="
-            let post of posts
-              | searchByWord: search
-              | filterDataByCriteria: filter.filterType:filter.order:filter.filterWord
-          "
-          [post]="post"
-        ></app-card>
-      </ng-container>
+  <ng-container *ngIf="filter$ | async as filter">
+    <ng-container *ngIf="posts$ | async as posts">
+      <app-card
+        *ngFor="
+          let post of posts | filterDataByCriteria: filter.filterType:filter.order:filter.filterWord
+        "
+        [post]="post"
+      ></app-card>
     </ng-container>
   </ng-container>
 </section>

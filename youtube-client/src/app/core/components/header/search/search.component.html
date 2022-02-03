@@ -1,10 +1,9 @@
-<form class="search" (submit)="displayResults()">
+<form class="search">
   <input
     class="search__input"
     type="text"
     placeholder="What are you want to find out?"
-    [(ngModel)]="searchString"
+    (input)="onInput($event)"
     name="search"
   />
-  <button class="search__button" type="submit">search</button>
 </form>

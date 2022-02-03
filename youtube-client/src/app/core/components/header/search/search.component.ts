@@ -1,23 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SearchServiceService } from 'src/app/core/services/search-service.service';
+import { BehaviorSubject, debounceTime, filter, Subscription } from 'rxjs';
 import { RoutesPath } from 'src/app/routes.enum';
+import { CardService } from 'src/app/youtube/services/card.service';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent {
-  searchString: string = '';
+export class SearchComponent implements OnInit, OnDestroy {
+  #search$ = new BehaviorSubject('');
 
-  constructor(
-    private readonly searchService: SearchServiceService,
-    private readonly router: Router,
-  ) {}
+  subscription$?: Subscription;
 
-  displayResults() {
-    this.router.navigate([RoutesPath.Youtube]);
-    this.searchService.setSearchWord(this.searchString);
+  constructor(private readonly cardService: CardService, private readonly router: Router) {}
+
+  ngOnInit(): void {
+    this.subscription$ = this.#search$
+      .pipe(
+        debounceTime(400),
+        filter((val) => val.length > 3),
+      )
+      .subscribe((val) => {
+        this.cardService.getPosts(val);
+        this.router.navigate([RoutesPath.Youtube]);
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription$?.unsubscribe();
+  }
+
+  onInput(event: Event) {
+    const val = (event.target as HTMLInputElement).value;
+    this.#search$.next(val);
   }
 }
