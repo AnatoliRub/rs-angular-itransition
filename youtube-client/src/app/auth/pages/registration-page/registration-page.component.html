@@ -2,37 +2,34 @@
   <form class="form" [formGroup]="form">
     <h2 class="form__title">Registration</h2>
 
-    <div class="form__item">
-      <label class="form__item-label" for="firstName">First name:</label>
-      <input class="form__item-input" type="text" id="firstName" formControlName="firstName" />
-      <ng-container *ngIf="firstName && firstName?.errors">
-        <app-error [control]="firstName"></app-error>
-      </ng-container>
-    </div>
-
-    <div class="form__item">
-      <label class="form__item-label" for="lastName">Last name:</label>
-      <input class="form__item-input" type="text" id="lastName" formControlName="lastName" />
-      <ng-container *ngIf="lastName && lastName?.errors">
-        <app-error [control]="lastName"></app-error>
-      </ng-container>
-    </div>
-
-    <div class="form__item">
-      <label class="form__item-label" for="email">mail:</label>
-      <input class="form__item-input" type="email" id="email" formControlName="email" />
-      <ng-container *ngIf="email && email?.errors">
-        <app-error [control]="email"></app-error>
-      </ng-container>
-    </div>
-
-    <div class="form__item">
-      <label class="form__item-label" for="password">password:</label>
-      <input class="form__item-input" type="password" id="password" formControlName="password" />
-      <ng-container *ngIf="password && password?.errors">
-        <app-error [control]="password"></app-error>
-      </ng-container>
-    </div>
+    <app-form-input
+      [control]="firstName"
+      type="text"
+      name="firstName"
+      caption="First name:"
+      [form]="form"
+    ></app-form-input>
+    <app-form-input
+      [control]="lastName"
+      type="text"
+      name="lastName"
+      caption="Last name:"
+      [form]="form"
+    ></app-form-input>
+    <app-form-input
+      [control]="email"
+      type="email"
+      name="email"
+      caption="email:"
+      [form]="form"
+    ></app-form-input>
+    <app-form-input
+      [control]="password"
+      type="password"
+      name="password"
+      caption="password:"
+      [form]="form"
+    ></app-form-input>
 
     <div class="form__controls">
       <button type="button" class="form__login-button button" (click)="goToLogin()">Login</button>
