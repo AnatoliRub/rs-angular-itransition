@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ErrorPageComponent } from './error-page/error-page.component';
+import { ErrorPageComponent } from './technical/pages/error-page/error-page.component';
 import { RoutesPath } from './routes.enum';
 
 const routes: Routes = [
