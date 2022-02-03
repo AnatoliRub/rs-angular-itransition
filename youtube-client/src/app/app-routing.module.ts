@@ -11,6 +11,10 @@ const routes: Routes = [
     path: RoutesPath.Auth,
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
+  {
+    path: RoutesPath.Admin,
+    loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule),
+  },
   { path: RoutesPath.Main, redirectTo: RoutesPath.Youtube, pathMatch: 'full' },
   {
     path: RoutesPath.Error,
