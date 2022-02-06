@@ -1,14 +1,17 @@
 @import 'src/styles.scss';
 
+:host {
+  margin-left: rem(14.5);
+}
+
 .search__settings-button {
   @include base-button-behavior;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: rem(4.5);
-  width: rem(24);
-  margin-left: rem(14.5);
+  width: rem(18);
+  margin: rem(1.5) rem(0);
   background: var(--blue);
   border-radius: rem(5);
   transition: 1s;
