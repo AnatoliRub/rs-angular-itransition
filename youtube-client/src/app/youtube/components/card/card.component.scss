@@ -65,18 +65,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
-
-  &__button {
-    @include text;
-    @include base-button-behavior;
-    color: var(--white);
-    border: none;
-    outline: none;
-    height: rem(32);
-    background-color: var(--blue);
-    border-radius: rem(5);
-    width: rem(120);
-  }
 }
 
 .info-text {
