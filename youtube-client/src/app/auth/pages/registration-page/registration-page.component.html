@@ -32,10 +32,8 @@
     ></app-form-input>
 
     <div class="form__controls">
-      <button type="button" class="form__login-button button" (click)="goToLogin()">Login</button>
-      <button type="submit" class="form__registration-button button" [disabled]="form!.invalid">
-        Registration
-      </button>
+      <app-button type="link" caption="Login" (clickHandler)="goToLogin()"></app-button>
+      <app-button type="submit" caption="Registration" [isDisabled]="form.invalid"></app-button>
     </div>
   </form>
 </div>
