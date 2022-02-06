@@ -13,6 +13,7 @@ import { LoginInfoComponent } from './components/header/login-info/login-info.co
 import { LogoComponent } from './components/header/logo/logo.component';
 import { SearchSettingsComponent } from './components/header/search-settings/search-settings.component';
 import { SearchComponent } from './components/header/search/search.component';
+import { SharedModule } from '../shared/shared.module';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -38,6 +39,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
     FontAwesomeModule,
     CommonModule,
     FormsModule,
+    SharedModule,
   ],
 })
 export class CoreModule {}

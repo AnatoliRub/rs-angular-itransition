@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
@@ -12,7 +11,6 @@ import { SharedModule } from '../shared/shared.module';
   exports: [LoginPageComponent],
   imports: [
     CommonModule,
-    ReactiveFormsModule,
     SharedModule,
     RouterModule.forChild([
       {

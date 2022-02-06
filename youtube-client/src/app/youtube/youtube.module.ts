@@ -15,6 +15,7 @@ import { InfoItemComponent } from './components/info-item/info-item.component';
 import { InfoComponent } from './components/info/info.component';
 import { RoutesPath } from '../routes.enum';
 import { AuthGuard } from '../auth/guards/auth.guard';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AuthGuard } from '../auth/guards/auth.guard';
     CommonModule,
     MaterialModule,
     FontAwesomeModule,
+    SharedModule,
     RouterModule.forChild([
       { path: RoutesPath.Main, component: SearchResultPageComponent, canActivate: [AuthGuard] },
       { path: RoutesPath.Detail, component: DetailedPageComponent, canActivate: [AuthGuard] },
