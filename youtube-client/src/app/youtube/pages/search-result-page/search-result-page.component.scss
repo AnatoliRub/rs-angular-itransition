@@ -1,6 +1,7 @@
 @import 'src/styles.scss';
 
 .app-search-result {
+  position: relative;
   &__container {
     height: calc(100vh - rem(80 + 50));
     overflow: auto;
@@ -39,4 +40,14 @@
       background: transparent;
     }
   }
+}
+
+.button-container {
+  position: absolute;
+  bottom: rem(30);
+  right: rem(30);
+}
+
+.fa-plus {
+  @include big-label;
 }
