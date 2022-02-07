@@ -1,12 +1,12 @@
-import { UserData } from '../types/user-data.model';
+import { UserData } from '../types/user-data.type';
 
 export class User {
   admin: UserData = { loginData: 'catok1992@gmail.com', passwordData: '123456' };
 
   user: UserData;
 
-  constructor(loginData: string, passwordData: string) {
-    this.user = { loginData, passwordData };
+  constructor(data: UserData = { loginData: '', passwordData: '' }) {
+    this.user = data;
   }
 
   isAdminRole(): boolean {

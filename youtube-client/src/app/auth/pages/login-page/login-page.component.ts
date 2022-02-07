@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/app/admin/models/user.model';
+import { AdminService } from 'src/app/admin/services/admin.service';
+import { UserData } from 'src/app/admin/types/user-data.type';
 import { RoutesPath } from 'src/app/routes.enum';
 import { AuthService } from '../../services/auth.service';
 import { Control } from '../../types/control.type';
@@ -18,7 +21,11 @@ export class LoginPageComponent {
     password: this.getPasswordController(),
   });
 
-  constructor(private readonly router: Router, private readonly authService: AuthService) {}
+  constructor(
+    private readonly router: Router,
+    private readonly authService: AuthService,
+    private readonly adminService: AdminService,
+  ) {}
 
   getLoginController() {
     return new FormControl('', [Validators.email, Validators.required]);
@@ -37,7 +44,12 @@ export class LoginPageComponent {
   }
 
   submit() {
-    this.authService.login({ loginData: this.login?.value, passwordData: this.password?.value });
+    const currentUserData: UserData = {
+      loginData: this.login?.value,
+      passwordData: this.password?.value,
+    };
+    this.authService.login(currentUserData);
+    this.adminService.checkAdmin(new User(currentUserData));
     this.router.navigate([RoutesPath.Main]);
   }
 

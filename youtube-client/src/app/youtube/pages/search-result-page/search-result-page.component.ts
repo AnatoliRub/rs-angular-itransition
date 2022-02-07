@@ -6,6 +6,8 @@ import { RoutesPath } from 'src/app/routes.enum';
 import { IFilterData } from 'src/types/filtering-criteria-types';
 import { Post } from 'src/types/youtube-data';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { AdminService } from 'src/app/admin/services/admin.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 import { CardService } from '../../services/card.service';
 
 @Component({
@@ -22,11 +24,17 @@ export class SearchResultPageComponent {
 
   filter$: Observable<IFilterData> = this.searchService.filter;
 
+  isAdmin$: Observable<boolean> = this.adminService.isAdmin;
+
   constructor(
     private readonly searchService: SearchServiceService,
     private readonly cardServise: CardService,
     private readonly router: Router,
-  ) {}
+    private readonly adminService: AdminService,
+    private readonly authService: AuthService,
+  ) {
+    this.adminService.checkAdmin(this.authService.getUser());
+  }
 
   goToAdminPage() {
     this.router.navigateByUrl(RoutesPath.Admin);
