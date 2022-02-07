@@ -15,7 +15,6 @@ export class ErrorPageComponent implements OnInit, OnDestroy {
   constructor(private readonly route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    // eslint-disable-next-line no-console
     this.subscription = this.route.queryParams.subscribe((val) => {
       this.adminError = val['admin'];
     });
