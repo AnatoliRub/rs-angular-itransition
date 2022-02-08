@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RoutesPath } from 'src/app/routes.enum';
 import { AuthService } from '../../services/auth.service';
-import { Control } from '../../types/control.type';
+import { Control } from '../../../shared/types/control.type';
 
 @Component({
   selector: 'app-login-page',
