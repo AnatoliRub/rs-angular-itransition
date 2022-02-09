@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
-enum Control {
-  Title = 'title',
-  Discription = 'discription',
-  Image = 'image',
-  VideoLink = 'videoLink',
-}
+import { Store } from '@ngrx/store';
+import { Control } from '../../models/controls.model';
+import { createCard } from '../../ngrx/actions/custom-card.actions';
 
 @Component({
   selector: 'app-admin-page',
@@ -17,37 +13,52 @@ enum Control {
 export class AdminPageComponent {
   form: FormGroup = new FormGroup({
     title: this.getTitleController(),
-    discription: this.getDiscriptionController(),
+    description: this.getDescriptionController(),
     image: this.getImageController(),
     videoLink: this.getVideoLinkController(),
   });
 
-  constructor(private readonly router: Router) {}
+  constructor(private readonly router: Router, private readonly store: Store) {}
 
-  createCard() {}
-
-  getTitleController() {
-    return new FormControl('', [Validators.required]);
+  createCard() {
+    this.store.dispatch(
+      createCard({
+        card: {
+          title: this.title?.value,
+          description: this.description?.value,
+          image: this.image?.value,
+          videoLink: this.videoLink?.value,
+          publishedAt: Date.now().toString(),
+        },
+      }),
+    );
   }
 
-  getDiscriptionController() {
-    return new FormControl('', [Validators.required]);
+  getTitleController() {
+    return new FormControl('Fedor Kotokrad', [Validators.required]);
+  }
+
+  getDescriptionController() {
+    return new FormControl('Murder cat', [Validators.required]);
   }
 
   getImageController() {
-    return new FormControl('', [Validators.required]);
+    return new FormControl(
+      'https://images.complex.com/complex/images/c_fill,dpr_auto,f_auto,q_auto,w_1400/fl_lossy,pg_1/zjupack6yuikbh4s86fw/cats?fimg-ssr',
+      [Validators.required],
+    );
   }
 
   getVideoLinkController() {
-    return new FormControl('', [Validators.required]);
+    return new FormControl('https://www.youtube.com/watch?v=aIdR0Y5g0KY', [Validators.required]);
   }
 
   get title() {
     return this.form.get(Control.Title);
   }
 
-  get discription() {
-    return this.form.get(Control.Discription);
+  get description() {
+    return this.form.get(Control.Description);
   }
 
   get image() {
