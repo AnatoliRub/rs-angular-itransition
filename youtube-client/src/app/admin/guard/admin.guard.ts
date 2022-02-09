@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable, tap } from 'rxjs';
+import { selectIsAdminRole } from 'src/app/auth/ngrx/selectors/auth.selectors';
 import { RoutesPath } from 'src/app/routes.enum';
-import { AdminService } from '../services/admin.service';
 
 @Injectable()
 export class AdminGuard implements CanActivate {
-  #isAdmin$ = this.adminService.isAdmin;
-
-  constructor(private readonly adminService: AdminService, private readonly router: Router) {}
+  constructor(private readonly router: Router, private readonly store: Store) {}
 
   canActivate(): Observable<boolean> {
-    return this.#isAdmin$.pipe(
+    return this.store.select(selectIsAdminRole).pipe(
       tap((access) => {
         if (!access)
           this.router.navigate([RoutesPath.Error], {
