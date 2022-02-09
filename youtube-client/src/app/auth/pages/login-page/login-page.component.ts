@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'src/app/admin/models/user.model';
-import { AdminService } from 'src/app/admin/services/admin.service';
+import { Store } from '@ngrx/store';
 import { UserData } from 'src/app/admin/types/user-data.type';
 import { RoutesPath } from 'src/app/routes.enum';
-import { AuthService } from '../../services/auth.service';
+import { login, logout } from '../../ngrx/actions/auth.actions';
+import { selectIsLoggedIn } from '../../ngrx/selectors/auth.selectors';
 import { Control } from '../../types/control.type';
 
 @Component({
@@ -14,18 +14,31 @@ import { Control } from '../../types/control.type';
   styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent {
-  isAuthenticated$ = this.authService.isAuth;
+  isAuthenticated$ = this.store.select(selectIsLoggedIn);
 
   form: FormGroup = new FormGroup({
     login: this.getLoginController(),
     password: this.getPasswordController(),
   });
 
-  constructor(
-    private readonly router: Router,
-    private readonly authService: AuthService,
-    private readonly adminService: AdminService,
-  ) {}
+  constructor(private readonly router: Router, private readonly store: Store) {}
+
+  goToRegistration() {
+    this.router.navigate([RoutesPath.Auth, RoutesPath.Registration]);
+  }
+
+  logout() {
+    this.store.dispatch(logout());
+  }
+
+  submit() {
+    const user: UserData = {
+      loginData: this.login?.value,
+      passwordData: this.password?.value,
+    };
+    this.store.dispatch(login({ user }));
+    this.router.navigate([RoutesPath.Main]);
+  }
 
   getLoginController() {
     return new FormControl('', [Validators.email, Validators.required]);
@@ -33,24 +46,6 @@ export class LoginPageComponent {
 
   getPasswordController() {
     return new FormControl('', [Validators.required, Validators.minLength(6)]);
-  }
-
-  goToRegistration() {
-    this.router.navigate([RoutesPath.Auth, RoutesPath.Registration]);
-  }
-
-  logout() {
-    this.authService.logout();
-  }
-
-  submit() {
-    const currentUserData: UserData = {
-      loginData: this.login?.value,
-      passwordData: this.password?.value,
-    };
-    this.authService.login(currentUserData);
-    this.adminService.checkAdmin(new User(currentUserData));
-    this.router.navigate([RoutesPath.Main]);
   }
 
   get login() {

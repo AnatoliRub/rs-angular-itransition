@@ -18,15 +18,22 @@
     ></app-form-input>
 
     <div class="form__controls">
-      <app-button caption="Logout" (clickHandler)="logout()"></app-button>
+      <app-button
+        *ngIf="isAuthenticated$ | async"
+        caption="Logout"
+        (clickHandler)="logout()"
+      ></app-button>
       <app-button
         type="link"
         caption="Registration"
         (clickHandler)="goToRegistration()"
       ></app-button>
-      <ng-container *ngIf="(isAuthenticated$ | async) === false">
-        <app-button type="submit" caption="Login" [isDisabled]="form.invalid"></app-button>
-      </ng-container>
+      <app-button
+        *ngIf="(isAuthenticated$ | async) === false"
+        type="submit"
+        caption="Login"
+        [isDisabled]="form.invalid"
+      ></app-button>
     </div>
   </form>
 </div>
