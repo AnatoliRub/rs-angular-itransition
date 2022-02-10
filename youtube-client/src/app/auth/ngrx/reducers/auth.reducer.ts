@@ -3,11 +3,13 @@ import { UserData } from 'src/app/admin/types/user-data.type';
 import { AuthActions } from '../actions/auth-action.types';
 
 export interface AuthState {
-  user: UserData | undefined;
+  user: UserData | null;
 }
 
+const userData = localStorage.getItem('user');
+
 export const initialAuthState: AuthState = {
-  user: undefined,
+  user: userData !== null ? JSON.parse(userData) : null,
 };
 
 export const authReducer = createReducer(
@@ -15,7 +17,8 @@ export const authReducer = createReducer(
   on(AuthActions.login, (state, { user }): AuthState => {
     return { ...state, user };
   }),
+
   on(AuthActions.logout, (state): AuthState => {
-    return { ...state, user: undefined };
+    return { ...state, user: null };
   }),
 );

@@ -23,7 +23,7 @@ export class AuthEffects {
         ofType(AuthActions.logout),
         tap(() => {
           localStorage.removeItem('user');
-          this.router.navigateByUrl(RoutesPath.Login);
+          this.router.navigateByUrl([RoutesPath.Auth, RoutesPath.Login].join('/'));
         }),
       );
     },
