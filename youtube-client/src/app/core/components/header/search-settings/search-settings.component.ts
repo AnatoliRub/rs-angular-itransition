@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { SearchServiceService } from 'src/app/core/services/search-service.service';
+import { Store } from '@ngrx/store';
+import { searchActions } from 'src/app/core/ngrx/actions/search-action.types';
 
 @Component({
   selector: 'app-search-settings',
@@ -7,9 +8,9 @@ import { SearchServiceService } from 'src/app/core/services/search-service.servi
   styleUrls: ['./search-settings.component.scss'],
 })
 export class SearchSettingsComponent {
-  constructor(private readonly searchService: SearchServiceService) {}
+  constructor(private readonly store: Store) {}
 
   toggleSettings() {
-    this.searchService.toggleSettings();
+    this.store.dispatch(searchActions.toggleSearchAction());
   }
 }

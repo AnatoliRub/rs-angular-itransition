@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { SearchServiceService } from '../../services/search-service.service';
+import { selectSearchIsShow } from '../../ngrx/selectors/search.selectors';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import { SearchServiceService } from '../../services/search-service.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  public isVisible$: Observable<boolean> = this.searchService.isShowSettings;
+  public isVisible$: Observable<boolean> = this.store.select(selectSearchIsShow);
 
-  constructor(private readonly searchService: SearchServiceService) {}
+  constructor(private readonly store: Store) {}
 }

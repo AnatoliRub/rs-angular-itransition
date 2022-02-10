@@ -1,6 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, debounceTime, filter, Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { debounceTime, filter, Subscription, tap } from 'rxjs';
+import { searchActions } from 'src/app/core/ngrx/actions/search-action.types';
+import { selectSearchWord } from 'src/app/core/ngrx/selectors/search.selectors';
 import { RoutesPath } from 'src/app/routes.enum';
 import { CardService } from 'src/app/youtube/services/card.service';
 
@@ -9,15 +12,16 @@ import { CardService } from 'src/app/youtube/services/card.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent implements OnInit, OnDestroy {
-  #search$ = new BehaviorSubject('');
+export class SearchComponent implements OnDestroy {
+  subscription$: Subscription;
 
-  subscription$?: Subscription;
-
-  constructor(private readonly cardService: CardService, private readonly router: Router) {}
-
-  ngOnInit(): void {
-    this.subscription$ = this.#search$
+  constructor(
+    private readonly cardService: CardService,
+    private readonly router: Router,
+    private readonly store: Store,
+  ) {
+    this.subscription$ = this.store
+      .select(selectSearchWord)
       .pipe(
         debounceTime(400),
         filter((val) => val.length > 3),
@@ -29,11 +33,11 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription$?.unsubscribe();
+    this.subscription$.unsubscribe();
   }
 
   onInput(event: Event) {
-    const val = (event.target as HTMLInputElement).value;
-    this.#search$.next(val);
+    const searchWord = (event.target as HTMLInputElement).value;
+    this.store.dispatch(searchActions.setSearchWord({ searchWord }));
   }
 }
