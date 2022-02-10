@@ -1,0 +1,4 @@
+@import 'src/styles.scss';
+.image-container {
+  @include card-image;
+}
