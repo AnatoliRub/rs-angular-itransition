@@ -6,7 +6,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MaterialModule } from './material/material.module';
 import { CoreModule } from './core/core.module';
 import { reducers, metaReducers } from './reducers';
 import { environment } from '../environments/environment';
@@ -16,7 +15,6 @@ import { environment } from '../environments/environment';
   imports: [
     AppRoutingModule,
     BrowserModule,
-    MaterialModule,
     CoreModule,
     HttpClientModule,
     StoreModule.forRoot(reducers, {
