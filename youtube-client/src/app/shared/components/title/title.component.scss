@@ -1,0 +1,9 @@
+@import 'src/styles.scss';
+
+:host {
+  align-self: flex-end;
+}
+
+.title {
+  @include card-title;
+}
