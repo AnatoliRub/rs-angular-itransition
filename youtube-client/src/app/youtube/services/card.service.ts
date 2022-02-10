@@ -22,19 +22,15 @@ export class CardService {
   constructor(private http: HttpClient) {}
 
   getPosts(searchPhrase: string) {
-    this.getPostsData(searchPhrase)
-      .pipe(
-        map((res) =>
-          Object.values(res.items)
-            .map((el) => el.id.videoId)
-            .join(','),
-        ),
-        concatMap((res) => this.getPostsDataWithStatistic(res)),
-        take(1),
-      )
-      .subscribe((posts) => {
-        this.#posts.next(posts);
-      });
+    return this.getPostsData(searchPhrase).pipe(
+      map((res) =>
+        Object.values(res.items)
+          .map((el) => el.id.videoId)
+          .join(','),
+      ),
+      concatMap((res) => this.getPostsDataWithStatistic(res)),
+      take(1),
+    );
   }
 
   getPostsData(searchPhrase: string) {
