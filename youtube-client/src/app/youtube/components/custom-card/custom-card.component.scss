@@ -1,0 +1,17 @@
+@import 'src/styles.scss';
+
+.end {
+  margin-top: auto
+}
+
+.card {
+  @include card;
+
+  @include card-border;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+  }
+
+}
