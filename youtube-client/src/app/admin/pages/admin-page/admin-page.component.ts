@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 enum Control {
@@ -24,37 +24,35 @@ export class AdminPageComponent {
 
   constructor(private readonly router: Router) {}
 
-  createCard() {}
-
-  getTitleController() {
+  getTitleController(): FormControl {
     return new FormControl('', [Validators.required]);
   }
 
-  getDiscriptionController() {
+  getDiscriptionController(): FormControl {
     return new FormControl('', [Validators.required]);
   }
 
-  getImageController() {
+  getImageController(): FormControl {
     return new FormControl('', [Validators.required]);
   }
 
-  getVideoLinkController() {
+  getVideoLinkController(): FormControl {
     return new FormControl('', [Validators.required]);
   }
 
-  get title() {
+  get title(): AbstractControl | null {
     return this.form.get(Control.Title);
   }
 
-  get discription() {
+  get discription(): AbstractControl | null {
     return this.form.get(Control.Discription);
   }
 
-  get image() {
+  get image(): AbstractControl | null {
     return this.form.get(Control.Image);
   }
 
-  get videoLink() {
+  get videoLink(): AbstractControl | null {
     return this.form.get(Control.VideoLink);
   }
 }

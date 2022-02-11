@@ -17,7 +17,12 @@ export class ButtonComponent {
 
   @Output() clickHandler: EventEmitter<void> = new EventEmitter<void>();
 
-  setStyles() {
+  setStyles(): {
+    icon: boolean;
+    text: boolean;
+    circle: boolean;
+    link: boolean;
+  } {
     return {
       icon: this.type === Type.Icon,
       text: this.type === (Type.Text || Type.Submit),
@@ -26,15 +31,15 @@ export class ButtonComponent {
     };
   }
 
-  setTypeButton() {
+  setTypeButton(): Type.Submit | Type.Button {
     return this.type === Type.Submit ? Type.Submit : Type.Button;
   }
 
-  noImage() {
+  noImage(): boolean {
     return this.type !== Type.Image;
   }
 
-  onBtnClick() {
+  onBtnClick(): void {
     this.clickHandler.emit();
   }
 }

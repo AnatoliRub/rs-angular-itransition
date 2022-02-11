@@ -13,7 +13,7 @@ export class LoginInfoComponent {
 
   constructor(private readonly router: Router) {}
 
-  goToLogin() {
+  goToLogin(): void {
     this.router.navigate([RoutesPath.Auth, RoutesPath.Login]);
   }
 }

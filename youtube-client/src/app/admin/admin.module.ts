@@ -5,7 +5,6 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { RoutesPath } from '../routes.enum';
 import { SharedModule } from '../shared/shared.module';
 
-
 @NgModule({
   declarations: [AdminPageComponent],
   imports: [

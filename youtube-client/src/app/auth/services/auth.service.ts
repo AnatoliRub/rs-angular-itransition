@@ -10,12 +10,12 @@ export class AuthService {
 
   isAuth = this.#isAuth.asObservable();
 
-  login(data: ILoginData) {
+  login(data: ILoginData): void {
     this.#isAuth.next(true);
     localStorage.setItem('user', JSON.stringify(data));
   }
 
-  logout() {
+  logout(): void {
     this.#isAuth.next(false);
     localStorage.removeItem('user');
   }

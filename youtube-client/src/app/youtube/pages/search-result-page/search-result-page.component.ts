@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { SearchServiceService } from 'src/app/core/services/search-service.service';
 import { RoutesPath } from 'src/app/routes.enum';
 import { IFilterData } from 'src/types/filtering-criteria-types';
-import { Post } from 'src/types/youtube-data';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { Post } from 'src/types/youtube-data';
 import { CardService } from '../../services/card.service';
 
 @Component({
@@ -28,7 +28,7 @@ export class SearchResultPageComponent {
     private readonly router: Router,
   ) {}
 
-  goToAdminPage() {
+  goToAdminPage(): void {
     this.router.navigateByUrl(RoutesPath.Admin);
   }
 }

@@ -9,7 +9,7 @@ import { SearchServiceService } from 'src/app/core/services/search-service.servi
 export class SearchSettingsComponent {
   constructor(private readonly searchService: SearchServiceService) {}
 
-  toggleSettings() {
+  toggleSettings(): void {
     this.searchService.toggleSettings();
   }
 }

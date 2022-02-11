@@ -5,20 +5,22 @@ import { RoutesPath } from './routes.enum';
 const routes: Routes = [
   {
     path: RoutesPath.Youtube,
-    loadChildren: () => import('./youtube/youtube.module').then((m) => m.YoutubeModule),
+    loadChildren: (): Promise<any> =>
+      import('./youtube/youtube.module').then((m) => m.YoutubeModule),
   },
   {
     path: RoutesPath.Auth,
-    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    loadChildren: (): Promise<any> => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: RoutesPath.Admin,
-    loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule),
+    loadChildren: (): Promise<any> => import('./admin/admin.module').then((m) => m.AdminModule),
   },
   { path: RoutesPath.Main, redirectTo: RoutesPath.Youtube, pathMatch: 'full' },
   {
     path: RoutesPath.Error,
-    loadChildren: () => import('./technical/technical.module').then((m) => m.TechnicalModule),
+    loadChildren: (): Promise<any> =>
+      import('./technical/technical.module').then((m) => m.TechnicalModule),
   },
   { path: RoutesPath.Redirect, redirectTo: RoutesPath.Error },
 ];

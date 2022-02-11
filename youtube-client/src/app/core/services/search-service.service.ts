@@ -20,16 +20,16 @@ export class SearchServiceService {
 
   filter = this.#filter.asObservable();
 
-  setFilter(value: IFilterData) {
+  setFilter(value: IFilterData): void {
     this.#filter.next(value);
   }
 
-  toggleSettings() {
+  toggleSettings(): void {
     this.#toggleSearchSettings = !this.#toggleSearchSettings;
     this.#isShowSettings.next(this.#toggleSearchSettings);
   }
 
-  setSearchWord(value: string) {
+  setSearchWord(value: string): void {
     this.#searchWord.next(value);
   }
 }

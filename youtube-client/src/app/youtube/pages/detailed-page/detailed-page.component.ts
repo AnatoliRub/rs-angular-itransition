@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-import { concatMap, Observable, Subscription } from 'rxjs';
+import { Subscription, concatMap, Observable } from 'rxjs';
 import { RoutesPath } from 'src/app/routes.enum';
 import { Post } from 'src/types/youtube-data';
 import { CardService } from '../../services/card.service';
@@ -41,7 +41,7 @@ export class DetailedPageComponent implements OnInit, OnDestroy {
     this.subscription?.unsubscribe();
   }
 
-  goBack() {
+  goBack(): void {
     this.router.navigate([RoutesPath.Youtube]);
   }
 }

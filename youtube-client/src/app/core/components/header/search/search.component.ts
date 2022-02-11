@@ -32,7 +32,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.subscription$?.unsubscribe();
   }
 
-  onInput(event: Event) {
+  onInput(event: Event): void {
     const val = (event.target as HTMLInputElement).value;
     this.#search$.next(val);
   }
