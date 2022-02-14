@@ -17,7 +17,7 @@ export class DetailedPageComponent {
 
   constructor(private readonly router: Router, private readonly store: Store) {}
 
-  goBack() {
+  goBack(): void {
     this.router.navigate([RoutesPath.Youtube]);
   }
 }

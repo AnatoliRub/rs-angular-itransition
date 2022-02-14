@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { UserData } from 'src/app/admin/types/user-data.type';
 import { RoutesPath } from 'src/app/routes.enum';
 import { login, logout } from '../../ngrx/actions/auth.actions';
 import { selectIsLoggedIn } from '../../ngrx/selectors/auth.selectors';
-import { Control } from '../../types/control.type';
+import { Control } from '../../../shared/types/control.type';
 
 @Component({
   selector: 'app-login-page',
@@ -23,15 +23,15 @@ export class LoginPageComponent {
 
   constructor(private readonly router: Router, private readonly store: Store) {}
 
-  goToRegistration() {
+  goToRegistration(): void {
     this.router.navigate([RoutesPath.Auth, RoutesPath.Registration]);
   }
 
-  logout() {
+  logout(): void {
     this.store.dispatch(logout());
   }
 
-  submit() {
+  submit(): void {
     const user: UserData = {
       loginData: this.login?.value,
       passwordData: this.password?.value,
@@ -40,19 +40,19 @@ export class LoginPageComponent {
     this.router.navigate([RoutesPath.Main]);
   }
 
-  getLoginController() {
+  getLoginController(): FormControl {
     return new FormControl('', [Validators.email, Validators.required]);
   }
 
-  getPasswordController() {
+  getPasswordController(): FormControl {
     return new FormControl('', [Validators.required, Validators.minLength(6)]);
   }
 
-  get login() {
+  get login(): AbstractControl | null {
     return this.form.get(Control.Login);
   }
 
-  get password() {
+  get password(): AbstractControl | null {
     return this.form.get(Control.Password);
   }
 }

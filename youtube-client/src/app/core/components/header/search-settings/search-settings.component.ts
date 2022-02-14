@@ -10,7 +10,7 @@ import { searchActions } from 'src/app/core/ngrx/actions/search-action.types';
 export class SearchSettingsComponent {
   constructor(private readonly store: Store) {}
 
-  toggleSettings() {
+  toggleSettings(): void {
     this.store.dispatch(searchActions.toggleSearchAction());
   }
 }

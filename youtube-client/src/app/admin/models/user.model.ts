@@ -23,7 +23,7 @@ export class User {
     );
   }
 
-  getSortEntries(user: UserData) {
+  getSortEntries(user: UserData): [string, string][] {
     return Object.entries(user).sort((a: [string, string], b: [string, string]) =>
       a[0].localeCompare(b[0]),
     );

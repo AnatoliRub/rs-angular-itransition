@@ -24,7 +24,7 @@ export class FilteringCriteriaComponent {
 
   constructor(private readonly store: Store) {}
 
-  toggleOrder() {
+  toggleOrder(): void {
     if (this.previousFilterState === this.currentFilterState) {
       this.order = this.order === Order.Desc ? Order.Asc : Order.Desc;
     } else {
@@ -32,14 +32,14 @@ export class FilteringCriteriaComponent {
     }
   }
 
-  setAndResetValues(filter: Filter) {
+  setAndResetValues(filter: Filter): void {
     this.filterWord = '';
     this.isReadOnly = 'readonly';
     this.toggleOrder();
     this.previousFilterState = filter;
   }
 
-  setFilter(event: MouseEvent) {
+  setFilter(event: MouseEvent): void {
     this.currentFilterState = (event.target as HTMLLabelElement).htmlFor;
 
     switch (this.currentFilterState) {
@@ -81,7 +81,7 @@ export class FilteringCriteriaComponent {
     }
   }
 
-  filterResultsByWord(event: Event) {
+  filterResultsByWord(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.filterWord = input.value;
     const filter = {
@@ -96,7 +96,7 @@ export class FilteringCriteriaComponent {
     );
   }
 
-  changeOrder() {
+  changeOrder(): string[] {
     if (this.order === Order.Desc) {
       return ['rotate'];
     }

@@ -31,7 +31,7 @@ export class SearchResultPageComponent {
 
   constructor(private readonly router: Router, private readonly store: Store) {}
 
-  goToAdminPage() {
+  goToAdminPage(): void {
     this.router.navigateByUrl(RoutesPath.Admin);
   }
 }

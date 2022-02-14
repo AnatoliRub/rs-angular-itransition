@@ -4,7 +4,12 @@
       <app-card-image [src]="post.snippet.thumbnails.medium.url"></app-card-image>
       <app-info [statistics]="post.statistics"></app-info>
       <app-title [title]="post.snippet.title"></app-title>
-      <app-button class="end" type="text" caption="more..." (clickHandler)="goToPage()"></app-button>
+      <app-button
+        class="end"
+        type="text"
+        caption="more..."
+        (clickHandler)="goToPage()"
+      ></app-button>
     </div>
   </div>
 </div>

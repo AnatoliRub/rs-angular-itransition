@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Control } from '../../models/controls.model';
@@ -20,7 +20,7 @@ export class AdminPageComponent {
 
   constructor(private readonly router: Router, private readonly store: Store) {}
 
-  createCard() {
+  createCard(): void {
     this.store.dispatch(
       createCard({
         card: {
@@ -34,38 +34,38 @@ export class AdminPageComponent {
     );
   }
 
-  getTitleController() {
+  getTitleController(): FormControl {
     return new FormControl('Fedor Kotokrad', [Validators.required]);
   }
 
-  getDescriptionController() {
+  getDescriptionController(): FormControl {
     return new FormControl('Murder cat', [Validators.required]);
   }
 
-  getImageController() {
+  getImageController(): FormControl {
     return new FormControl(
       'https://images.complex.com/complex/images/c_fill,dpr_auto,f_auto,q_auto,w_1400/fl_lossy,pg_1/zjupack6yuikbh4s86fw/cats?fimg-ssr',
       [Validators.required],
     );
   }
 
-  getVideoLinkController() {
+  getVideoLinkController(): FormControl {
     return new FormControl('https://www.youtube.com/watch?v=aIdR0Y5g0KY', [Validators.required]);
   }
 
-  get title() {
+  get title(): AbstractControl | null {
     return this.form.get(Control.Title);
   }
 
-  get description() {
+  get description(): AbstractControl | null {
     return this.form.get(Control.Description);
   }
 
-  get image() {
+  get image(): AbstractControl | null {
     return this.form.get(Control.Image);
   }
 
-  get videoLink() {
+  get videoLink(): AbstractControl | null {
     return this.form.get(Control.VideoLink);
   }
 }

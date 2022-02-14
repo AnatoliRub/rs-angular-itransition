@@ -1,9 +1,5 @@
 @import 'src/styles.scss';
 
-:host {
-  margin-left: rem(14.5);
-}
-
 .search__settings-button {
   @include base-button-behavior;
   display: flex;

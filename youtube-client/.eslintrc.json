@@ -18,12 +18,8 @@
         "plugin:prettier/recommended"
       ],
       "rules": {
-        "max-len": [
-          "error",
-          {
-            "code": 140
-          }
-        ],
+        "@typescript-eslint/explicit-function-return-type": ["error"],
+        "max-len": ["error", { "code": 140 }],
         "import/no-unresolved": "off",
         "@angular-eslint/directive-selector": [
           "error",
@@ -53,7 +49,7 @@
       }
     },
     {
-      "files": ["src/**/*.spec.ts", "src/**/*.d.ts"],
+      "files": ["src/app/**/*.spec.ts", "src/app/**/*.d.ts"],
       "parserOptions": {
         "project": "./src/tsconfig.spec.json"
       },

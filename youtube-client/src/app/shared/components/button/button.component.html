@@ -1,17 +1,14 @@
-<ng-container *ngTemplateOutlet="noImage() ? text : image"> </ng-container>
-
-<ng-template #text>
-  <button
-    class="button"
-    [ngClass]="setStyles()"
-    [type]="setTypeButton()"
-    [disabled]="isDisabled"
-    (click)="onBtnClick()"
-  >
-    <ng-content></ng-content>
-    {{ caption }}
-  </button>
-</ng-template>
+<button
+  *ngIf="noImage(); else image"
+  class="button"
+  [ngClass]="setStyles()"
+  [type]="setTypeButton()"
+  [disabled]="isDisabled"
+  (click)="onBtnClick()"
+>
+  <ng-content></ng-content>
+  {{ caption }}
+</button>
 
 <ng-template #image>
   <img alt="image button" [src]="src" (click)="onBtnClick()" />

@@ -12,7 +12,7 @@ import { RoutesPath } from 'src/app/routes.enum';
 export class SearchComponent {
   constructor(private readonly router: Router, private readonly store: Store) {}
 
-  onInput(event: Event) {
+  onInput(event: Event): void {
     const searchWord = (event.target as HTMLInputElement).value;
     this.store.dispatch(searchActions.setSearchWord({ searchWord }));
     this.router.navigate([RoutesPath.Youtube]);
