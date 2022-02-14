@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { AppRoutingModule } from '../app-routing.module';
 import { AuthInterceptor } from '../auth/interceptors/auth.interceptor';
 import { YoutubeComponent } from './components/svgs/youtube/youtube.component';
@@ -16,6 +17,7 @@ import { SearchSettingsComponent } from './components/header/search-settings/sea
 import { SearchComponent } from './components/header/search/search.component';
 import { SharedModule } from '../shared/shared.module';
 import { searchReducer } from './ngrx/reducer/search.reducer';
+import { SearchEsffects } from './ngrx/effects/search.effects';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -42,6 +44,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
     CommonModule,
     FormsModule,
     SharedModule,
+    EffectsModule.forFeature([SearchEsffects]),
     StoreModule.forFeature('search', searchReducer),
   ],
 })

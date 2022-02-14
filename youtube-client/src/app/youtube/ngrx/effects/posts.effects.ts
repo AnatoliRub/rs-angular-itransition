@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { concatMap, map } from 'rxjs';
-import { selectSearchWord } from 'src/app/core/ngrx/selectors/search.selectors';
 import { CardService } from '../../services/card.service';
 import { PostsActions } from '../actions/posts-action.types';
 
@@ -11,8 +10,7 @@ export class PostsEsffects {
   loadPosts$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(PostsActions.loadAllPosts),
-      concatMap(() => this.store.select(selectSearchWord)),
-      concatMap((val) => this.cardService.getPosts(val)),
+      concatMap((action) => this.cardService.getPosts(action.searchPhrase)),
       map((posts) => PostsActions.allPostsloaded({ posts })),
     );
   });

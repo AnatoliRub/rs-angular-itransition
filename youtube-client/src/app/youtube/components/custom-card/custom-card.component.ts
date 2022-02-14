@@ -8,9 +8,4 @@ import { CustomCard } from 'src/app/admin/models/card.model';
 })
 export class CustomCardComponent {
   @Input() card?: CustomCard;
-
-  constructor() {
-    // eslint-disable-next-line no-console
-    console.log(this.card);
-  }
 }
