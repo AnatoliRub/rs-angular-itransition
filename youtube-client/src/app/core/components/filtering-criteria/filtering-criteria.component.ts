@@ -42,42 +42,36 @@ export class FilteringCriteriaComponent {
   setFilter(event: MouseEvent): void {
     this.currentFilterState = (event.target as HTMLLabelElement).htmlFor;
 
-    switch (this.currentFilterState) {
-      case Filter.Date: {
-        this.setAndResetValues(Filter.Date);
-        const filter = {
-          order: this.order,
-          filterType: Filter.Date,
-        };
-        this.store.dispatch(
-          searchActions.setSearchFilter({
-            filter,
-          }),
-        );
-        break;
-      }
+    if (this.currentFilterState === Filter.Date) {
+      this.setAndResetValues(Filter.Date);
+      const filter = {
+        order: this.order,
+        filterType: Filter.Date,
+      };
+      this.store.dispatch(
+        searchActions.setSearchFilter({
+          filter,
+        }),
+      );
+      return;
+    }
 
-      case Filter.View: {
-        this.setAndResetValues(Filter.View);
-        const filter = {
-          order: this.order,
-          filterType: Filter.View,
-        };
-        this.store.dispatch(
-          searchActions.setSearchFilter({
-            filter,
-          }),
-        );
-        break;
-      }
+    if (this.currentFilterState === Filter.View) {
+      this.setAndResetValues(Filter.View);
+      const filter = {
+        order: this.order,
+        filterType: Filter.View,
+      };
+      this.store.dispatch(
+        searchActions.setSearchFilter({
+          filter,
+        }),
+      );
+      return;
+    }
 
-      case Filter.Word: {
-        this.isReadOnly = '';
-        break;
-      }
-
-      default:
-        break;
+    if (this.currentFilterState === Filter.Word) {
+      this.isReadOnly = '';
     }
   }
 
