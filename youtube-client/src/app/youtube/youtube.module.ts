@@ -11,6 +11,7 @@ import { InfoItemComponent } from './components/info-item/info-item.component';
 import { InfoComponent } from './components/info/info.component';
 import { RoutesPath } from '../routes.enum';
 import { AuthGuard } from '../auth/guards/auth.guard';
+import { SharedModule } from '../shared/shared.module';
 import { CommentComponent } from './components/svgs/comment/comment.component';
 import { DislikeComponent } from './components/svgs/dislike/dislike.component';
 import { LikeComponent } from './components/svgs/like/like.component';
@@ -34,6 +35,7 @@ import { ViewComponent } from './components/svgs/view/view.component';
     CommonModule,
     MaterialModule,
     FontAwesomeModule,
+    SharedModule,
     RouterModule.forChild([
       { path: RoutesPath.Main, component: SearchResultPageComponent, canActivate: [AuthGuard] },
       { path: RoutesPath.Detail, component: DetailedPageComponent, canActivate: [AuthGuard] },

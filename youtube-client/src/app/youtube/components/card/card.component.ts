@@ -14,11 +14,11 @@ export class CardComponent {
 
   constructor(private readonly router: Router) {}
 
-  goToPage() {
+  goToPage(): void {
     this.router.navigate([RoutesPath.Youtube, RoutesPath.DetailPart, this.post?.id]);
   }
 
-  setCardBorderColor() {
+  setCardBorderColor(): string[] {
     const dateNow = new Date();
     const datePublish = new Date(this.post!.snippet.publishedAt);
     const difference = Math.floor((dateNow.getTime() - datePublish.getTime()) / 86400000);

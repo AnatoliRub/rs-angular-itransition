@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RoutesPath } from 'src/app/routes.enum';
-import { Control } from '../../types/control.type';
+import { Control } from 'src/app/shared/types/control.type';
 import { onlyLetters } from '../../validators/onlyLetters.validator';
 
 @Component({
@@ -20,7 +20,7 @@ export class RegistrationPageComponent {
 
   constructor(private readonly router: Router) {}
 
-  getFirstNameController() {
+  getFirstNameController(): FormControl {
     return new FormControl('', [
       Validators.required,
       Validators.minLength(2),
@@ -30,7 +30,7 @@ export class RegistrationPageComponent {
     ]);
   }
 
-  getLastNameController() {
+  getLastNameController(): FormControl {
     return new FormControl('', [
       Validators.minLength(2),
       Validators.maxLength(20),
@@ -39,31 +39,31 @@ export class RegistrationPageComponent {
     ]);
   }
 
-  getEmailController() {
+  getEmailController(): FormControl {
     return new FormControl('', [Validators.email, Validators.required]);
   }
 
-  getPasswordController() {
+  getPasswordController(): FormControl {
     return new FormControl('', [Validators.required, Validators.minLength(6)]);
   }
 
-  goToLogin() {
+  goToLogin(): void {
     this.router.navigate([RoutesPath.Auth, RoutesPath.Login]);
   }
 
-  get firstName() {
+  get firstName(): AbstractControl | null {
     return this.form.get(Control.FirstName);
   }
 
-  get lastName() {
+  get lastName(): AbstractControl | null {
     return this.form.get(Control.LastName);
   }
 
-  get email() {
+  get email(): AbstractControl | null {
     return this.form.get(Control.Email);
   }
 
-  get password() {
+  get password(): AbstractControl | null {
     return this.form.get(Control.Password);
   }
 }

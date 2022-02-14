@@ -1,0 +1,35 @@
+<form class="form" [formGroup]="form" >
+  <h2 class="form__title">Create new card</h2>
+  <app-form-input
+    [control]="title"
+    type="text"
+    name="title"
+    caption="Title"
+    [form]="form"
+  ></app-form-input>
+  <app-form-input
+    [control]="discription"
+    type="text"
+    name="discription"
+    caption="Discription"
+    [form]="form"
+  ></app-form-input>
+  <app-form-input
+    [control]="image"
+    type="text"
+    name="image"
+    caption="Img"
+    [form]="form"
+  ></app-form-input>
+  <app-form-input
+    [control]="videoLink"
+    type="text"
+    name="videoLink"
+    caption="Link video"
+    [form]="form"
+  ></app-form-input>
+
+  <div class="form__controls">
+    <app-button type="submit" caption="Create card" [isDisabled]="form.invalid"></app-button>
+  </div>
+</form>

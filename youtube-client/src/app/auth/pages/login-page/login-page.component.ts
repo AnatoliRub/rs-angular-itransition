@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RoutesPath } from 'src/app/routes.enum';
 import { AuthService } from '../../services/auth.service';
@@ -20,32 +20,32 @@ export class LoginPageComponent {
 
   constructor(private readonly router: Router, private readonly authService: AuthService) {}
 
-  getLoginController() {
+  getLoginController(): FormControl {
     return new FormControl('', [Validators.email, Validators.required]);
   }
 
-  getPasswordController() {
+  getPasswordController(): FormControl {
     return new FormControl('', [Validators.required, Validators.minLength(6)]);
   }
 
-  goToRegistration() {
+  goToRegistration(): void {
     this.router.navigate([RoutesPath.Auth, RoutesPath.Registration]);
   }
 
-  logout() {
+  logout(): void {
     this.authService.logout();
   }
 
-  submit() {
+  submit(): void {
     this.authService.login({ loginData: this.login?.value, passwordData: this.password?.value });
     this.router.navigate([RoutesPath.Main]);
   }
 
-  get login() {
+  get login(): AbstractControl | null {
     return this.form.get(Control.Login);
   }
 
-  get password() {
+  get password(): AbstractControl | null {
     return this.form.get(Control.Password);
   }
 }
