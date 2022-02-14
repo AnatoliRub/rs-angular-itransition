@@ -13,8 +13,8 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): Observable<boolean> {
     return this.store.select(selectIsLoggedIn).pipe(
-      tap((LoggedIn) => {
-        if (!LoggedIn) {
+      tap((loggedIn) => {
+        if (!loggedIn) {
           this.router.navigate([RoutesPath.Auth, RoutesPath.Login], {
             queryParams: { auth: false },
           });
