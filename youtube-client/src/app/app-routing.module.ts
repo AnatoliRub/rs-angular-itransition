@@ -9,23 +9,22 @@ import { YoutubeModule } from './youtube/youtube.module';
 const routes: Routes = [
   {
     path: RoutesPath.Youtube,
-    loadChildren: (): Promise<typeof YoutubeModule> =>
+    loadChildren: (): Promise<YoutubeModule> =>
       import('./youtube/youtube.module').then((m) => m.YoutubeModule),
   },
   {
     path: RoutesPath.Auth,
-    loadChildren: (): Promise<typeof AuthModule> =>
-      import('./auth/auth.module').then((m) => m.AuthModule),
+    loadChildren: (): Promise<AuthModule> => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: RoutesPath.Admin,
-    loadChildren: (): Promise<typeof AdminModule> =>
+    loadChildren: (): Promise<AdminModule> =>
       import('./admin/admin.module').then((m) => m.AdminModule),
   },
   { path: RoutesPath.Main, redirectTo: RoutesPath.Youtube, pathMatch: 'full' },
   {
     path: RoutesPath.Error,
-    loadChildren: (): Promise<typeof TechnicalModule> =>
+    loadChildren: (): Promise<TechnicalModule> =>
       import('./technical/technical.module').then((m) => m.TechnicalModule),
   },
   { path: RoutesPath.Redirect, redirectTo: RoutesPath.Error },
