@@ -13,7 +13,7 @@ export class FilterDataByCriteriaPipe implements PipeTransform {
     word?: string,
   ): Post<string>[] => {
     if (Filter.Date === type) {
-      return posts.sort((a, b) =>
+      return [...posts].sort((a, b) =>
         order === Order.Desc
           ? new Date(b.snippet.publishedAt).getTime() - new Date(a.snippet.publishedAt).getTime()
           : new Date(a.snippet.publishedAt).getTime() - new Date(b.snippet.publishedAt).getTime(),
@@ -21,7 +21,7 @@ export class FilterDataByCriteriaPipe implements PipeTransform {
     }
 
     if (Filter.View === type) {
-      return posts.sort((a, b) =>
+      return [...posts].sort((a, b) =>
         order === Order.Desc
           ? Number(a.statistics.viewCount) - Number(b.statistics.viewCount)
           : Number(b.statistics.viewCount) - Number(a.statistics.viewCount),
@@ -29,7 +29,9 @@ export class FilterDataByCriteriaPipe implements PipeTransform {
     }
 
     if (Filter.Word === type) {
-      return posts.filter((post) => post.snippet.title.toLowerCase().includes(word!.toLowerCase()));
+      return [...posts].filter((post) =>
+        post.snippet.title.toLowerCase().includes(word!.toLowerCase()),
+      );
     }
 
     return posts;

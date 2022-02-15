@@ -21,20 +21,16 @@ export class CardService {
 
   constructor(private http: HttpClient) {}
 
-  getPosts(searchPhrase: string): void {
-    this.getPostsData(searchPhrase)
-      .pipe(
-        map((res) =>
-          Object.values(res.items)
-            .map((el) => el.id.videoId)
-            .join(','),
-        ),
-        concatMap((res) => this.getPostsDataWithStatistic(res)),
-        take(1),
-      )
-      .subscribe((posts) => {
-        this.#posts.next(posts);
-      });
+  getPosts(searchPhrase: string): Observable<Post<string>[]> {
+    return this.getPostsData(searchPhrase).pipe(
+      map((res) =>
+        Object.values(res.items)
+          .map((el) => el.id.videoId)
+          .join(','),
+      ),
+      concatMap((res) => this.getPostsDataWithStatistic(res)),
+      take(1),
+    );
   }
 
   getPostsData(searchPhrase: string): Observable<YoutubeData<Post<Id>>> {

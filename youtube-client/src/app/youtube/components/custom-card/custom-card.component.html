@@ -1,0 +1,8 @@
+<section>
+  <div class="card__container" *ngIf="card">
+    <div class="card" [appBorderStyle]="card.publishedAt">
+      <app-card-image [src]="card.image"></app-card-image>
+      <app-title [title]="card.title"></app-title>
+    </div>
+  </div>
+</section>

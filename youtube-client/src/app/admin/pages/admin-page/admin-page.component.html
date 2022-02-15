@@ -1,4 +1,4 @@
-<form class="form" [formGroup]="form" >
+<form class="form" [formGroup]="form" (submit)="createCard()">
   <h2 class="form__title">Create new card</h2>
   <app-form-input
     [control]="title"
@@ -8,10 +8,10 @@
     [form]="form"
   ></app-form-input>
   <app-form-input
-    [control]="discription"
+    [control]="description"
     type="text"
-    name="discription"
-    caption="Discription"
+    name="description"
+    caption="Description"
     [form]="form"
   ></app-form-input>
   <app-form-input

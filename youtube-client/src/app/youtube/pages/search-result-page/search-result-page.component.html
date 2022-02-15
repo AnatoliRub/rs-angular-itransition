@@ -7,11 +7,16 @@
         "
         [post]="post"
       ></app-card>
+      <ng-container *ngIf="customCards$ | async as cards">
+        <app-custom-card *ngFor="let card of cards" [card]="card"></app-custom-card>
+      </ng-container>
     </ng-container>
   </ng-container>
   <div class="button-container">
-    <app-button type="circle" (clickHandler)="goToAdminPage()">
-      <fa-icon class="fa-plus" [icon]="faPlus"></fa-icon>
-    </app-button>
+    <ng-container *ngIf="isAdmin$ | async as isAdmin">
+      <app-button type="circle" (clickHandler)="goToAdminPage()">
+        <fa-icon class="fa-plus" [icon]="faPlus"></fa-icon>
+      </app-button>
+    </ng-container>
   </div>
 </section>

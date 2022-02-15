@@ -14,14 +14,10 @@
   transition: 1s;
   padding: rem(8) rem(22);
   @include base-shadow(var(--blue));
-
+  @include base-button-behavior;
   &:disabled {
     background-color: var(--gray-light);
   }
-}
-
-.text {
-  @include base-button-behavior;
 }
 
 .icon {
@@ -46,6 +42,8 @@
     color: var(--white);
     text-decoration: none;
     text-shadow: var(--blue) 2px 0 20px;
+    box-shadow: none;
+    background-color: transparent;
   }
 
   &:active {

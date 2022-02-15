@@ -48,35 +48,33 @@
   }
 }
 
-@mixin form {
-  .form {
-    display: flex;
-    flex-direction: column;
-    max-width: rem(344);
-    width: 100%;
-    border-radius: 5px;
-    align-items: center;
-    padding: rem(30) rem(20) rem(26);
-    background-color: var(--popup-background);
-    margin-top: rem(45);
-    margin-left: auto;
-    margin-right: auto;
+@mixin form-container {
+  display: flex;
+  flex-direction: column;
+  max-width: rem(344);
+  width: 100%;
+  border-radius: 5px;
+  align-items: center;
+  padding: rem(30) rem(20) rem(26);
+  background-color: var(--popup-background);
+  margin-top: rem(45);
+  margin-left: auto;
+  margin-right: auto;
+}
 
-    &__title {
-      @include middle-label;
-      align-self: flex-start;
-      margin-bottom: rem(22);
-    }
+@mixin form-title {
+  @include middle-label;
+  align-self: flex-start;
+  margin-bottom: rem(22);
+}
 
-    &__controls {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: rem(15);
-      width: 100%;
-      margin-top: rem(10);
-    }
-  }
+@mixin form-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: rem(15);
+  width: 100%;
+  margin-top: rem(10);
 }
 
 @mixin base-svg-icon-behavior {
@@ -84,5 +82,56 @@
     & > path {
       fill: var(--blue);
     }
+  }
+}
+
+@mixin card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: rem(327);
+  background-color: var(--main-background);
+  padding: rem(20) rem(20) rem(10);
+  border-radius: rem(5);
+}
+
+@mixin card-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: rem(123);
+  width: rem(223);
+  overflow: hidden;
+  & > img {
+    width: 100%;
+  }
+}
+
+@mixin card-title {
+  @include label;
+  color: var(--black);
+  align-self: flex-end;
+  margin-top: rem(21);
+  max-width: rem(203);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin card-border {
+  &.green {
+    border-bottom: rem(5) solid var(--green);
+  }
+
+  &.blue {
+    border-bottom: rem(5) solid var(--blue);
+  }
+
+  &.red {
+    border-bottom: rem(5) solid var(--red);
+  }
+
+  &.yellow {
+    border-bottom: rem(5) solid var(--yellow);
   }
 }
