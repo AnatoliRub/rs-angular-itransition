@@ -1,26 +1,24 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs';
+import { Disposable } from 'src/app/shared/utils/disposable.class';
 
 @Component({
   selector: 'app-error-page',
   templateUrl: './error-page.component.html',
   styleUrls: ['./error-page.component.scss'],
 })
-export class ErrorPageComponent implements OnInit, OnDestroy {
-  subscription?: Subscription;
-
+export class ErrorPageComponent extends Disposable implements OnInit {
   adminError?: boolean;
 
-  constructor(private readonly route: ActivatedRoute) {}
+  constructor(private readonly route: ActivatedRoute) {
+    super();
+  }
 
   ngOnInit(): void {
-    this.subscription = this.route.queryParams.subscribe((val) => {
+    this.route.queryParams.pipe(takeUntil(this.disposed$)).subscribe((val) => {
       this.adminError = val['admin'];
     });
   }
 
-  ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
-  }
 }
