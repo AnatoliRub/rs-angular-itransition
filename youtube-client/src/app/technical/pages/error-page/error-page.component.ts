@@ -20,5 +20,4 @@ export class ErrorPageComponent extends Disposable implements OnInit {
       this.adminError = val['admin'];
     });
   }
-
 }
