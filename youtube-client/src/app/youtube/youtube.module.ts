@@ -23,6 +23,7 @@ import { PostsEsffects } from './ngrx/effects/posts.effects';
 import { postReducer } from './ngrx/reducers/post.reducer';
 import { CardImageComponent } from './components/card-image/card-image.component';
 import { BorderStyleDirective } from './directives/border-style.directive';
+import { FormatCountPipe } from './pipes/format-count.pipe';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { BorderStyleDirective } from './directives/border-style.directive';
     DislikeComponent,
     CommentComponent,
     FilterDataByCriteriaPipe,
+    FormatCountPipe,
     DetailedPageComponent,
     InfoItemComponent,
     InfoComponent,
