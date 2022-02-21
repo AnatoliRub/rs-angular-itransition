@@ -7,7 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { reducers, metaReducers } from './reducers';
+import { reducers } from './reducers';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -18,7 +18,6 @@ import { environment } from '../environments/environment';
     CoreModule,
     HttpClientModule,
     StoreModule.forRoot(reducers, {
-      metaReducers,
       runtimeChecks: {
         strictStateImmutability: true,
         strictActionImmutability: true,
@@ -26,7 +25,7 @@ import { environment } from '../environments/environment';
         strictStateSerializability: true,
       },
     }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot(),
   ],
   bootstrap: [AppComponent],

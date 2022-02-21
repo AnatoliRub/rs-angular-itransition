@@ -1,5 +1,4 @@
-import { ActionReducerMap, MetaReducer } from '@ngrx/store';
-import { environment } from '../../environments/environment';
+import { ActionReducerMap } from '@ngrx/store';
 import { customCardReducer } from '../admin/ngrx/reducers/custom-card.reducer';
 import { authReducer } from '../auth/ngrx/reducers/auth.reducer';
 import { searchReducer } from '../core/ngrx/reducer/search.reducer';
@@ -13,5 +12,3 @@ export const reducers: ActionReducerMap<State> = {
   search: searchReducer,
   posts: postReducer,
 };
-
-export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
