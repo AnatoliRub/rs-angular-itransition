@@ -1,14 +1,15 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { Store } from '@ngrx/store';
 import { Filter, Order } from 'src/types/filtering-criteria-types';
-import { SearchServiceService } from '../../services/search-service.service';
+import { searchActions } from '../../ngrx/actions/search-action.types';
 
 @Component({
   selector: 'app-filtering-criteria',
   templateUrl: './filtering-criteria.component.html',
   styleUrls: ['./filtering-criteria.component.scss'],
 })
-export class FilteringCriteriaComponent implements OnDestroy {
+export class FilteringCriteriaComponent {
   faSortDown = faSortDown;
 
   isReadOnly = 'readonly';
@@ -21,9 +22,9 @@ export class FilteringCriteriaComponent implements OnDestroy {
 
   @Input() filterWord = '';
 
-  constructor(private readonly searchService: SearchServiceService) {}
+  constructor(private readonly store: Store) {}
 
-  toggleOrder() {
+  toggleOrder(): void {
     if (this.previousFilterState === this.currentFilterState) {
       this.order = this.order === Order.Desc ? Order.Asc : Order.Desc;
     } else {
@@ -31,62 +32,65 @@ export class FilteringCriteriaComponent implements OnDestroy {
     }
   }
 
-  setAndResetValues(filter: Filter) {
+  setAndResetValues(filter: Filter): void {
     this.filterWord = '';
     this.isReadOnly = 'readonly';
     this.toggleOrder();
     this.previousFilterState = filter;
   }
 
-  setFilter(event: MouseEvent) {
+  setFilter(event: MouseEvent): void {
     this.currentFilterState = (event.target as HTMLLabelElement).htmlFor;
 
-    switch (this.currentFilterState) {
-      case Filter.Date: {
-        this.setAndResetValues(Filter.Date);
-        this.searchService.setFilter({
-          order: this.order,
-          filterType: Filter.Date,
-        });
-        break;
-      }
+    if (this.currentFilterState === Filter.Date) {
+      this.setAndResetValues(Filter.Date);
+      const filter = {
+        order: this.order,
+        filterType: Filter.Date,
+      };
+      this.store.dispatch(
+        searchActions.setSearchFilter({
+          filter,
+        }),
+      );
+      return;
+    }
 
-      case Filter.View: {
-        this.setAndResetValues(Filter.View);
-        this.searchService.setFilter({
-          order: this.order,
-          filterType: Filter.View,
-        });
-        break;
-      }
+    if (this.currentFilterState === Filter.View) {
+      this.setAndResetValues(Filter.View);
+      const filter = {
+        order: this.order,
+        filterType: Filter.View,
+      };
+      this.store.dispatch(
+        searchActions.setSearchFilter({
+          filter,
+        }),
+      );
+      return;
+    }
 
-      case Filter.Word: {
-        this.isReadOnly = '';
-        break;
-      }
-
-      default:
-        break;
+    if (this.currentFilterState === Filter.Word) {
+      this.isReadOnly = '';
     }
   }
 
-  ngOnDestroy(): void {
-    this.searchService.setFilter({
-      filterType: this.previousFilterState,
-    });
-  }
-
-  filterResultsByWord(event: Event) {
+  filterResultsByWord(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.filterWord = input.value;
-    this.searchService.setFilter({
+    const filter = {
       order: this.order,
       filterType: Filter.Word,
       filterWord: this.filterWord,
-    });
+    };
+    this.store.dispatch(
+      searchActions.setSearchFilter({
+        filter,
+      }),
+    );
   }
 
-  changeOrder() {
+  changeOrder(): string[] {
     if (this.order === Order.Desc) {
       return ['rotate'];
     }

@@ -21,23 +21,19 @@ export class CardService {
 
   constructor(private http: HttpClient) {}
 
-  getPosts(searchPhrase: string) {
-    this.getPostsData(searchPhrase)
-      .pipe(
-        map((res) =>
-          Object.values(res.items)
-            .map((el) => el.id.videoId)
-            .join(','),
-        ),
-        concatMap((res) => this.getPostsDataWithStatistic(res)),
-        take(1),
-      )
-      .subscribe((posts) => {
-        this.#posts.next(posts);
-      });
+  getPosts(searchPhrase: string): Observable<Post<string>[]> {
+    return this.getPostsData(searchPhrase).pipe(
+      map((res) =>
+        Object.values(res.items)
+          .map((el) => el.id.videoId)
+          .join(','),
+      ),
+      concatMap((res) => this.getPostsDataWithStatistic(res)),
+      take(1),
+    );
   }
 
-  getPostsData(searchPhrase: string) {
+  getPostsData(searchPhrase: string): Observable<YoutubeData<Post<Id>>> {
     let params = new HttpParams();
     params = params.append('part', 'snippet');
     params = params.append('type', 'video');
@@ -46,7 +42,7 @@ export class CardService {
     return this.http.get<YoutubeData<Post<Id>>>(`${this.mainRequestPart}search?`, { params });
   }
 
-  getPostsDataWithStatistic(ids: string) {
+  getPostsDataWithStatistic(ids: string): Observable<Post<string>[]> {
     let params = new HttpParams();
     params = params.append('part', 'snippet,statistics');
     params = params.append('id', ids);

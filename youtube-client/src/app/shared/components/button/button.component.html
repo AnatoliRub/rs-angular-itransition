@@ -1,0 +1,20 @@
+<button
+  *ngIf="type !== typesList.Image; else image"
+  class="button"
+  [ngClass]="{
+    icon: type === typesList.Icon,
+    text: type === (typesList.Text || typesList.Submit),
+    circle: type === typesList.Circle,
+    link: type === typesList.Link
+  }"
+  [type]="type === typesList.Submit ? typesList.Submit : typesList.Button"
+  [disabled]="isDisabled"
+  (click)="onBtnClick()"
+>
+  <ng-content></ng-content>
+  {{ caption }}
+</button>
+
+<ng-template #image>
+  <img alt="image button" [src]="src" (click)="onBtnClick()" />
+</ng-template>

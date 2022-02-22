@@ -26,6 +26,10 @@
 
 .search-settings {
   grid-area: d;
+
+  @media (max-width: $width-md) {
+    margin-left: auto;
+  }
 }
 
 .login__account {

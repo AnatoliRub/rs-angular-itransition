@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   grid-area: b;
+  margin-right: rem(10);
 
   @media (max-width: $width-md-l) {
     flex: 1;

@@ -1,0 +1,9 @@
+<div class="error">
+  <app-error class="error__logo"></app-error>
+  <p *ngIf="adminError | async; else error" class="error__message">
+    Please, enter as administrator!!!
+  </p>
+  <ng-template #error>
+    <p class="error__message">Sorry, smth went wrong((</p>
+  </ng-template>
+</div>

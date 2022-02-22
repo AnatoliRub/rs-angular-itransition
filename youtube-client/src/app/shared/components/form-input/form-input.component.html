@@ -1,0 +1,9 @@
+<ng-container *ngIf="form">
+  <div class="form__item" [formGroup]="form">
+    <label class="form__item-label" for="{{ name }}">{{ caption }}</label>
+    <input class="form__item-input" [type]="type" [id]="name" [formControlName]="name" />
+    <ng-container *ngIf="control && control?.errors">
+      <app-error [control]="control"></app-error>
+    </ng-container>
+  </div>
+</ng-container>

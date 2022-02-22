@@ -1,108 +1,13 @@
 @import 'src/styles.scss';
 
 .form {
-  display: flex;
-  flex-direction: column;
-  max-width: rem(344);
-  width: 100%;
-  border-radius: 5px;
-  align-items: center;
-  padding: rem(30) rem(20) rem(26);
-  background-color: var(--popup-background);
-  margin-top: rem(45);
-  margin-left: auto;
-  margin-right: auto;
+  @include form-container;
 
   &__title {
-    @include middle-label;
-    align-self: flex-start;
-    margin-bottom: rem(22);
-  }
-
-  &__item {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    width: 100%;
-    margin-bottom: rem(12);
-
-    &-label {
-      @include small-text;
-      color: var(--gray-darky);
-      margin-bottom: rem(4);
-      margin-left: rem(6);
-    }
-
-    &-input {
-      @include small-text;
-      padding-left: rem(9);
-      background-color: var(--gray-light);
-      height: rem(37);
-      border: none;
-      outline: none;
-      width: 100%;
-
-      &.ng-invalid.ng-touched {
-        border-bottom: rem(5) solid var(--red);
-        border-radius: rem(0) rem(0) rem(5) rem(5);
-      }
-
-      &.ng-valid.ng-touched {
-        border-bottom: rem(5) solid var(--green);
-        border-radius: rem(0) rem(0) rem(5) rem(5);
-      }
-    }
+    @include form-title;
   }
 
   &__controls {
-    display: flex;
-    justify-content: flex-end;
-    gap: rem(15);
-    width: 100%;
-    margin-top: rem(10);
-  }
-
-  &__login-button {
-    background-color: inherit;
-    color: var(--blue);
-    text-decoration: underline;
-
-    &:hover {
-      color: var(--white);
-      text-decoration: none;
-      text-shadow: var(--blue) 2px 0 20px;
-    }
-
-    &:active {
-      color: var(--black);
-    }
-  }
-
-  &__registration-button {
-    @include base-button-behavior;
-    width: rem(124);
-    height: rem(30);
-    border-radius: 5px;
-    background-color: var(--blue);
-    color: var(--white);
-
-    &:disabled {
-      background-color: var(--gray-light);
-    }
-  }
-}
-
-.button {
-  @include text;
-  border: none;
-  outline: none;
-}
-
-.validation {
-  padding-left: rem(6);
-
-  &__item {
-    color: var(--red);
-    margin-right: rem(3);
+    @include form-controls;
   }
 }

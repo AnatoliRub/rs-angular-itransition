@@ -2,39 +2,38 @@
   <form class="form" [formGroup]="form" (submit)="submit()">
     <h2 class="form__title">Login</h2>
 
-    <div class="form__item">
-      <label class="form__item-label" for="login">login:</label>
-      <input class="form__item-input" type="email" id="login" formControlName="login" />
-      <ng-container *ngIf="login && login?.errors">
-        <app-error [control]="login"></app-error>
-      </ng-container>
-    </div>
-
-    <div class="form__item">
-      <label class="form__item-label" for="password">password:</label>
-      <input class="form__item-input" type="password" id="password" formControlName="password" />
-      <ng-container *ngIf="password && password?.errors">
-        <app-error [control]="password"></app-error>
-      </ng-container>
-    </div>
+    <app-form-input
+      [control]="login"
+      type="email"
+      name="login"
+      caption="login:"
+      [form]="form"
+    ></app-form-input>
+    <app-form-input
+      [control]="password"
+      type="password"
+      name="password"
+      caption="password:"
+      [form]="form"
+    ></app-form-input>
 
     <div class="form__controls">
-      <button
-        type="button"
-        class="form__registration-button button"
-        (click)="logout()"
-        [disabled]="(isAuthenticated$ | async) === false"
-      >
-        Logout
-      </button>
-      <button type="button" class="form__login-button button" (click)="goToRegistration()">
-        Registration
-      </button>
-      <ng-container *ngIf="(isAuthenticated$ | async) === false as isAuth">
-        <button type="submit" class="form__registration-button button" [disabled]="form.invalid">
-          Login
-        </button>
-      </ng-container>
+      <app-button
+        *ngIf="isAuthenticated$ | async"
+        caption="Logout"
+        (clickHandler)="logout()"
+      ></app-button>
+      <app-button
+        type="link"
+        caption="Registration"
+        (clickHandler)="goToRegistration()"
+      ></app-button>
+      <app-button
+        *ngIf="(isAuthenticated$ | async) === false"
+        type="submit"
+        caption="Login"
+        [isDisabled]="form.invalid"
+      ></app-button>
     </div>
   </form>
 </div>

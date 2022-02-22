@@ -1,14 +1,15 @@
 <div>
   <div class="card__container" *ngIf="post">
-    <div class="card" [ngClass]="setCardBorderColor()">
-      <div class="card__image-container">
-        <img [src]="post.snippet.thumbnails.medium.url" alt="preview" />
-      </div>
+    <div class="card" [appBorderStyle]="post.snippet.publishedAt">
+      <app-card-image [src]="post.snippet.thumbnails.medium.url"></app-card-image>
       <app-info [statistics]="post.statistics"></app-info>
-      <h3 class="card__title" matTooltip="{{ post.snippet.title }}">
-        {{ post.snippet.title }}
-      </h3>
-      <button class="card__button" (click)="goToPage()">more...</button>
+      <app-title [title]="post.snippet.title"></app-title>
+      <app-button
+        class="end"
+        type="text"
+        caption="more..."
+        (clickHandler)="goToPage()"
+      ></app-button>
     </div>
   </div>
 </div>

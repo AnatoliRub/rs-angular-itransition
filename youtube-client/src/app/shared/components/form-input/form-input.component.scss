@@ -1,0 +1,42 @@
+@import 'src/styles.scss';
+
+:host {
+  width: inherit;
+}
+
+.form {
+  &__item {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: rem(12);
+
+    &-label {
+      @include small-text;
+      color: var(--gray-darky);
+      margin-bottom: rem(4);
+      margin-left: rem(6);
+    }
+
+    &-input {
+      @include small-text;
+      padding-left: rem(9);
+      background-color: var(--gray-light);
+      height: rem(37);
+      border: none;
+      outline: none;
+      width: 100%;
+
+      &.ng-invalid.ng-touched {
+        border-bottom: rem(5) solid var(--red);
+        border-radius: rem(0) rem(0) rem(5) rem(5);
+      }
+
+      &.ng-valid.ng-touched {
+        border-bottom: rem(5) solid var(--green);
+        border-radius: rem(0) rem(0) rem(5) rem(5);
+      }
+    }
+  }
+}
