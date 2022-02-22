@@ -13,7 +13,6 @@ export class BorderStyleDirective implements OnInit {
   }
 
   setCardBorderColor(): string {
-    console.log('olololololo');
     const dateNow = new Date();
     const datePublish = new Date(Number(this.date!));
     const difference = Math.floor((dateNow.getTime() - datePublish.getTime()) / 86400000);
