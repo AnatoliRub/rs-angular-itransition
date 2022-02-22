@@ -34,7 +34,7 @@ jobs:
             ${{ runner.os }}-
           
       - name: Install Dependencies
-      	if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: npm ci
         
       - name: Build
@@ -42,4 +42,3 @@ jobs:
         
       - name: Lint
         run: npm run lint
-        
