@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - feature/angular-unit-test
+      
+defaults:
+  run:
+    shell: bash
+    working-directory: youtube-client
 jobs:
   build:
     runs-on: ubuntu20
@@ -20,7 +25,7 @@ jobs:
           node-version: ${{ matrix.node-version}}
           
       - name: Install Dependencies
-        run: ls && npm i
+        run: npm ci
         
       - name: Build
         run: npm run build -- --prod
